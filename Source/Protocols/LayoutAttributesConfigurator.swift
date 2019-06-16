@@ -8,5 +8,5 @@
 
 import UIKit
 public protocol LayoutAttributesConfigurator{
-    func configure (collectionView:UICollectionView, attributes: CustomAttribute)
+    func configure (collectionView:UICollectionView, attributes: CustomAttributes)
 }

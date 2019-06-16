@@ -31,7 +31,7 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
     
     override open var collectionViewContentSize: CGSize {
         let numberOfSection = collectionView.numberOfItems(inSection: 0)
-        return CGSize(width: CGFloat(numberOfSection) * collectionView.frame.width, height: collectionView.frame.height)
+        return CGSize(width: CGFloat(numberOfSection) * collectionView.width, height: collectionView.height)
     }
     
     override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
