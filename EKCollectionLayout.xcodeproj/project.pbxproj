@@ -13,6 +13,14 @@
 		450AAD1022B646D100D50833 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 450AAD0E22B646D100D50833 /* Main.storyboard */; };
 		450AAD1222B646D300D50833 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 450AAD1122B646D300D50833 /* Assets.xcassets */; };
 		450AAD1522B646D300D50833 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 450AAD1322B646D300D50833 /* LaunchScreen.storyboard */; };
+		450AAD1C22B6487D00D50833 /* LayoutAttributesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD1B22B6487D00D50833 /* LayoutAttributesConfigurator.swift */; };
+		450AAD1D22B6487D00D50833 /* LayoutAttributesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD1B22B6487D00D50833 /* LayoutAttributesConfigurator.swift */; };
+		450AAD2022B648ED00D50833 /* EKLayoutFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD1F22B648ED00D50833 /* EKLayoutFlow.swift */; };
+		450AAD2122B648ED00D50833 /* EKLayoutFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD1F22B648ED00D50833 /* EKLayoutFlow.swift */; };
+		450AAD2322B6491D00D50833 /* CustomAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD2222B6491D00D50833 /* CustomAttributes.swift */; };
+		450AAD2422B6491D00D50833 /* CustomAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD2222B6491D00D50833 /* CustomAttributes.swift */; };
+		450AAD2622B64A7900D50833 /* CollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD2522B64A7900D50833 /* CollectionView+Extension.swift */; };
+		450AAD2722B64A7900D50833 /* CollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD2522B64A7900D50833 /* CollectionView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +34,10 @@
 		450AAD1122B646D300D50833 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		450AAD1422B646D300D50833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		450AAD1622B646D300D50833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		450AAD1B22B6487D00D50833 /* LayoutAttributesConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutAttributesConfigurator.swift; sourceTree = "<group>"; };
+		450AAD1F22B648ED00D50833 /* EKLayoutFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKLayoutFlow.swift; sourceTree = "<group>"; };
+		450AAD2222B6491D00D50833 /* CustomAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAttributes.swift; sourceTree = "<group>"; };
+		450AAD2522B64A7900D50833 /* CollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +79,8 @@
 		450AACFB22B645E200D50833 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				450AAD1E22B648E900D50833 /* Core */,
+				450AAD1A22B6484300D50833 /* Protocols */,
 				450AACFC22B645E200D50833 /* EKCollectionLayout.h */,
 				450AACFD22B645E200D50833 /* Info.plist */,
 			);
@@ -84,6 +98,24 @@
 				450AAD1622B646D300D50833 /* Info.plist */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		450AAD1A22B6484300D50833 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				450AAD1B22B6487D00D50833 /* LayoutAttributesConfigurator.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		450AAD1E22B648E900D50833 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				450AAD1F22B648ED00D50833 /* EKLayoutFlow.swift */,
+				450AAD2222B6491D00D50833 /* CustomAttributes.swift */,
+				450AAD2522B64A7900D50833 /* CollectionView+Extension.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +179,7 @@
 				TargetAttributes = {
 					450AACF822B645E200D50833 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 					450AAD0722B646D100D50833 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -197,6 +230,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				450AAD2622B64A7900D50833 /* CollectionView+Extension.swift in Sources */,
+				450AAD1C22B6487D00D50833 /* LayoutAttributesConfigurator.swift in Sources */,
+				450AAD2322B6491D00D50833 /* CustomAttributes.swift in Sources */,
+				450AAD2022B648ED00D50833 /* EKLayoutFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +242,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				450AAD0D22B646D100D50833 /* ViewController.swift in Sources */,
+				450AAD2122B648ED00D50833 /* EKLayoutFlow.swift in Sources */,
+				450AAD1D22B6487D00D50833 /* LayoutAttributesConfigurator.swift in Sources */,
+				450AAD2422B6491D00D50833 /* CustomAttributes.swift in Sources */,
+				450AAD2722B64A7900D50833 /* CollectionView+Extension.swift in Sources */,
 				450AAD0B22B646D100D50833 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,6 +397,7 @@
 		450AAD0222B645E200D50833 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -373,6 +415,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuron.EKCollectionLayout;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -381,6 +424,7 @@
 		450AAD0322B645E200D50833 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;

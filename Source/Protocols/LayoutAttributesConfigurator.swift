@@ -6,4 +6,7 @@
 //  Copyright © 2019 Neuron. All rights reserved.
 //
 
-import Foundation
+import UIKit
+public protocol LayoutAttributesConfigurator{
+    func configure (collectionView:UICollectionView, attributes: CustomAttribute)
+}
