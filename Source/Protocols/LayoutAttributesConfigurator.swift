@@ -7,6 +7,11 @@
 //
 
 import UIKit
-public protocol LayoutAttributesConfigurator{
-    func configure (collectionView:UICollectionView, attributes: CustomAttributes)
+
+@objc public  protocol LayoutAttributesConfigurator{
+    @objc optional func prepare(layout flow:EKLayoutFlow)
+    @objc optional func transform(flow:EKLayoutFlow, attribute: CustomAttributes)
+    @objc optional func targetContentOffset(flow:EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint
 }
+
+
