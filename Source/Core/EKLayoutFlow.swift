@@ -28,7 +28,6 @@ extension CGSize {
     }
 }
 
-
 open class EKLayoutFlow: UICollectionViewFlowLayout {
     /// The configurator that would actually handle the transitions.
     open var configurator: LayoutAttributesConfigurator?
@@ -47,38 +46,41 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
         firstSetupDone = true
     }
     
-    open override var collectionViewContentSize: CGSize {
-        return .init(width: 1200, height: 200)
-    }
-    
     override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
-  
+    
     open override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         return configurator?.targetContentOffset?(flow: self, proposedContentOffset: proposedContentOffset, velocity: velocity) ?? super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity)
     }
-    
     
     /// Overrided so that we can store extra information in the layout attributes.
     open override class var layoutAttributesClass: AnyClass { return CustomAttributes.self }
     
     override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        guard let attributes = super.layoutAttributesForElements(in: rect) else { return nil }
-        guard  configurator?.transform != nil else { return attributes }
+        guard var attributes = super.layoutAttributesForElements(in: rect) else { return nil }
         
-        return attributes.compactMap { $0.copy() as? CustomAttributes }.map { attribute in
-            let distance: CGFloat = collectionView.width
-            let itemOffset: CGFloat = attribute.center.x - collectionView.contentOffset.x
-            attribute.startOffset = (attribute.frame.origin.x - collectionView.contentOffset.x) / attribute.frame.width
-            attribute.endOffset = (attribute.frame.origin.x - collectionView.contentOffset.x - collectionView.width) / attribute.frame.width
-            attribute.middleOffset = itemOffset / distance - 0.5
-            // Cache the contentView since we're going to use it a lot.
-            if attribute.contentView == nil, let c = collectionView.cellForItem(at: attribute.indexPath)?.contentView {
-                attribute.contentView = c
+        if configurator?.transform != nil {
+            attributes = attributes.compactMap { $0.copy() as? UICollectionViewLayoutAttributes }.map {
+                configurator?.transform?(flow: self, attributes: $0)
+                return $0
             }
-            configurator?.transform?(flow: self, attribute: attribute)
-            return attribute
+        }else if configurator?.transformCustom != nil {
+            attributes = attributes.compactMap { $0.copy() as? CustomAttributes }.map { attribute in
+                let distance: CGFloat = collectionView.width
+                let itemOffset: CGFloat = attribute.center.x - collectionView.contentOffset.x
+                attribute.startOffset = (attribute.frame.origin.x - collectionView.contentOffset.x) / attribute.frame.width
+                attribute.endOffset = (attribute.frame.origin.x - collectionView.contentOffset.x - collectionView.width) / attribute.frame.width
+                attribute.middleOffset = itemOffset / distance - 0.5
+                // Cache the contentView since we're going to use it a lot.
+                if attribute.contentView == nil, let c = collectionView.cellForItem(at: attribute.indexPath)?.contentView {
+                    attribute.contentView = c
+                }
+                configurator?.transform?(flow: self, attributes: attribute)
+                return attribute
+            }
         }
+        return attributes
+        
     }
 }
