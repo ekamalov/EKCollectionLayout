@@ -27,22 +27,37 @@ class ViewController: UIViewController {
         return cv
     }()
     
+    lazy var collectionView: UICollectionView = {
+        let layout = EKLayoutFlow()
+        layout.configurator = EKAppStoreLayout()
+        layout.itemSize = CGSize(width: mainScreenWidth-40, height: 67)
+        layout.scrollDirection = .horizontal
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = .white
+        cv.showsHorizontalScrollIndicator = false
+        cv.register(CVCell.self, forCellWithReuseIdentifier: CVCell.identifier)
+        cv.dataSource = self
+        cv.delegate = self
+        return cv
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(collectionViewA)
+        self.view.addSubview(collectionView)
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        print(mainScreenWidth - 100)
         collectionViewA.frame = CGRect(x: 0, y:50, width: view.frame.width, height: 130)
+        collectionView.frame = CGRect(x: 0, y: collectionViewA.frame.maxY + 20, width: view.frame.width, height: 250)
+
     }
 }
 
 
 extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return collectionView == self.collectionView ? 6 : 4
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CVCell.identifier, for: indexPath)
