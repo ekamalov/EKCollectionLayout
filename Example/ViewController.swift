@@ -16,8 +16,8 @@ class ViewController: UIViewController {
         let layout = EKLayoutFlow()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 15
-        layout.configurator = CarouselLayout(scaleItemSize: .init(width: 50,height: 70))
-        layout.itemSize = .init(width: 70, height: 120)
+        layout.configurator = EKCarouselLayout(scaleItemSize: .init(width: 80,height: 80))
+        layout.itemSize = .init(width: 120, height: 120)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .white
         cv.showsHorizontalScrollIndicator = false
@@ -30,10 +30,12 @@ class ViewController: UIViewController {
     lazy var collectionView: UICollectionView = {
         let layout = EKLayoutFlow()
         layout.configurator = EKAppStoreLayout()
-        layout.itemSize = CGSize(width: mainScreenWidth-40, height: 67)
+        layout.itemSize = CGSize(width: mainScreenWidth-50, height: 67)
+        layout.minimumLineSpacing = 15
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .white
+        cv.contentInset = .init(top: 0, left: 20, bottom: 0, right: 20)
         cv.showsHorizontalScrollIndicator = false
         cv.register(CVCell.self, forCellWithReuseIdentifier: CVCell.identifier)
         cv.dataSource = self
@@ -44,20 +46,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(collectionViewA)
-        self.view.addSubview(collectionView)
+//        self.view.addSubview(collectionView)
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionViewA.frame = CGRect(x: 0, y:50, width: view.frame.width, height: 130)
         collectionView.frame = CGRect(x: 0, y: collectionViewA.frame.maxY + 20, width: view.frame.width, height: 250)
-
     }
 }
 
 
 extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collectionView == self.collectionView ? 6 : 4
+        return collectionView == self.collectionView ? 12 : 4
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CVCell.identifier, for: indexPath)
