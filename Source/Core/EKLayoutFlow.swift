@@ -8,18 +8,6 @@
 
 import UIKit
 
-extension UICollectionView {
-    var width:CGFloat {
-        return self.frame.width
-    }
-    var height:CGFloat {
-        return self.frame.height
-    }
-    var size:CGSize {
-        return self.frame.size
-    }
-}
-
 extension CGSize {
     func scale(other: CGSize)-> CGPoint {
         let x = self.width / other.width
@@ -94,10 +82,10 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
             }
         }else if configurator?.transformCustom != nil {
             attributes = attributes.compactMap { $0.copy() as? CustomAttributes }.map { attributes in
-                let distance: CGFloat = collectionView.width
+                let distance: CGFloat = collectionView.frame.width
                 let itemOffset: CGFloat = attributes.center.x - collectionView.contentOffset.x
                 attributes.startOffset = (attributes.frame.origin.x - collectionView.contentOffset.x) / attributes.frame.width
-                attributes.endOffset = (attributes.frame.origin.x - collectionView.contentOffset.x - collectionView.width) / attributes.frame.width
+                attributes.endOffset = (attributes.frame.origin.x - collectionView.contentOffset.x - collectionView.frame.width) / attributes.frame.width
                 attributes.middleOffset = itemOffset / distance - 0.5
                 // Cache the contentView since we're going to use it a lot.
                 if attributes.contentView == nil, let c = collectionView.cellForItem(at: attributes.indexPath)?.contentView {

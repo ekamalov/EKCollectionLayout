@@ -17,7 +17,7 @@ public class EKAppStoreLayout:LayoutAttributesConfigurator {
         if flow.collectionView.decelerationRate != .fast  { flow.collectionView.decelerationRate = .fast }
     }
     public func targetContentOffset(flow: EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint {
-        guard let rectAttributes = flow.layoutAttributesForElements(in: .init(origin: .init(x: proposedContentOffset.x, y: 0), size: flow.collectionView.size)) else { return .zero }
+        guard let rectAttributes = flow.layoutAttributesForElements(in: .init(origin: .init(x: proposedContentOffset.x, y: 0), size: flow.collectionView.frame.size)) else { return .zero }
         var offsetAdjustment = CGFloat.greatestFiniteMagnitude
         let proposedContentOffsetCenterX = proposedContentOffset.x + flow.collectionView.frame.width / 2
         
