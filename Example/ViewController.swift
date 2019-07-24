@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 15
         layout.configurator = CarouselLayout(scaleItemSize: .init(width: 50,height: 70))
-        layout.itemSize = .init(width: 70, height: 120)
+        layout.itemSize = .init(width: 120, height: 120)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .white
         cv.showsHorizontalScrollIndicator = false
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(collectionViewA)
-        self.view.addSubview(collectionView)
+//        self.view.addSubview(collectionView)
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

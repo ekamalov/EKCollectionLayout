@@ -21,7 +21,7 @@ open class CustomAttributes: UICollectionViewLayoutAttributes {
 }
 
 extension CustomAttributes {
-    open override var description: String {
+    open var customDescription: String {
         return "startOffset: \(self.startOffset), middleOffset: \(self.middleOffset), endOffset: \(self.endOffset) "
     }
 }
