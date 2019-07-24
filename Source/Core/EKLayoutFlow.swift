@@ -20,7 +20,7 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
     /// The configurator that would actually handle the transitions.
     open var configurator: LayoutAttributesConfigurator?
     
-    internal var cachedItemsAttributes: [IndexPath: UICollectionViewLayoutAttributes] = [:]
+    internal var cachedItemsAttributes: [IndexPath: CustomAttributes] = [:]
     
     override open var collectionView: UICollectionView { return super.collectionView! }
     
@@ -41,8 +41,8 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
         }
     }
     
-    private func createAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+    private func createAttributesForItem(at indexPath: IndexPath) -> CustomAttributes? {
+        let attributes = CustomAttributes(forCellWith: indexPath)
         attributes.frame = .init(origin: .init(x: CGFloat(indexPath.item) * (itemSize.width + minimumLineSpacing), y: 0), size: itemSize)
         return attributes
     }
@@ -72,30 +72,27 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
     /// Overrided so that we can store extra information in the layout attributes.
     open override class var layoutAttributesClass: AnyClass { return CustomAttributes.self }
     
+    
     override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var attributes = cachedItemsAttributes.map { $0.value }.filter { $0.frame.intersects(rect) }
         
-        if configurator?.transform != nil {
-            attributes = attributes.compactMap { $0.copy() as? UICollectionViewLayoutAttributes }.map {
-                configurator?.transform?(flow: self, attributes: $0)
-                return $0
-            }
-        }else if configurator?.transformCustom != nil {
-            attributes = attributes.compactMap { $0.copy() as? CustomAttributes }.map { attributes in
+         attributes = attributes.compactMap { $0.copy() as? CustomAttributes }.map { attr in
+            if configurator?.transform != nil {
+                configurator?.transform?(flow: self, attributes: attr)
+            }else if configurator?.transformCustomCalc != nil{
                 let distance: CGFloat = collectionView.frame.width
-                let itemOffset: CGFloat = attributes.center.x - collectionView.contentOffset.x
-                attributes.startOffset = (attributes.frame.origin.x - collectionView.contentOffset.x) / attributes.frame.width
-                attributes.endOffset = (attributes.frame.origin.x - collectionView.contentOffset.x - collectionView.frame.width) / attributes.frame.width
-                attributes.middleOffset = itemOffset / distance - 0.5
+                let itemOffset: CGFloat = attr.center.x - collectionView.contentOffset.x
+                attr.startOffset = (attr.frame.origin.x - collectionView.contentOffset.x) / attr.frame.width
+                attr.endOffset = (attr.frame.origin.x - collectionView.contentOffset.x - collectionView.frame.width) / attr.frame.width
+                attr.middleOffset = itemOffset / distance - 0.5
                 // Cache the contentView since we're going to use it a lot.
-                if attributes.contentView == nil, let c = collectionView.cellForItem(at: attributes.indexPath)?.contentView {
-                    attributes.contentView = c
+                if attr.contentView == nil, let c = collectionView.cellForItem(at: attr.indexPath)?.contentView {
+                    attr.contentView = c
                 }
-                configurator?.transform?(flow: self, attributes: attributes)
-                return attributes
+                configurator?.transformCustomCalc?(flow: self, attributes: attr)
             }
+            return attr
         }
         return attributes
-        
     }
 }
