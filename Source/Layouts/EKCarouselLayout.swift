@@ -55,11 +55,9 @@ extension CarouselLayout: LayoutAttributesConfigurator {
         
         return CGPoint(x: newOffsetX, y: proposedContentOffset.y)
     }
-   
-    public func transform(flow: EKLayoutFlow, attributes: UICollectionViewLayoutAttributes) {
-        
+    public func transformCustomCalc(flow: EKLayoutFlow, attributes: CustomAttributes) {
+                print(attributes.indexPath, attributes)
     }
-    
 //    public func transform(flow: EKLayoutFlow, attributes: UICollectionViewLayoutAttributes) {
 //        let visibleRect = CGRect.init(origin: flow.collectionView.contentOffset, size: flow.collectionView.frame.size)
 //        let distanceFromCenter = visibleRect.midX - attributes.center.x
