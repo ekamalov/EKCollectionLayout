@@ -24,20 +24,17 @@ public class CarouselLayout {
 
 extension CarouselLayout: LayoutAttributesConfigurator {
     public func prepare(layout flow: EKLayoutFlow) {
-        assert(flow.collectionView.numberOfSections == 1, "Multi section aren't supported!")
         assert(flow.scrollDirection == .horizontal, "Horizontal scroll direction aren't supported!")
-
         if flow.collectionView.decelerationRate != .fast  { flow.collectionView.decelerationRate = .fast }
         
         let insetPadding = (flow.collectionView.frame.width - flow.itemSize.width) / 2
         flow.collectionView.contentInset = .init(top: flow.collectionView.contentInset.top, left: insetPadding, bottom: flow.collectionView.contentInset.bottom, right: insetPadding)
         
         self.minScale = scaleItemSize.scale(other: flow.itemSize)
-        flow.minimumLineSpacing = flow.minimumLineSpacing - (flow.itemSize.width - scaleItemSize.width) / 2
     }
     
     public func targetContentOffset(flow: EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint {
-        guard let rectAttributes = flow.layoutAttributesForElements(in: .init(origin: .init(x: proposedContentOffset.x, y: 0), size: flow.collectionView.size)) else { return .zero }
+        guard let rectAttributes = flow.layoutAttributesForElements(in: .init(origin: .init(x: proposedContentOffset.x, y: 0), size: flow.collectionView.frame.size)) else { return .zero }
         var offsetAdjustment = CGFloat.greatestFiniteMagnitude
         let proposedContentOffsetCenterX = proposedContentOffset.x + flow.collectionView.frame.width / 2
         
@@ -58,17 +55,20 @@ extension CarouselLayout: LayoutAttributesConfigurator {
         
         return CGPoint(x: newOffsetX, y: proposedContentOffset.y)
     }
-   
-    public func transform(flow: EKLayoutFlow, attributes: UICollectionViewLayoutAttributes) {
-        let visibleRect = CGRect.init(origin: flow.collectionView.contentOffset, size: flow.collectionView.size)
-        let distanceFromCenter = visibleRect.midX - attributes.center.x
-        let absDistanceFromCenter = min(abs(distanceFromCenter), flow.itemSize.width)
-        // scale value have error (+- 2px)
-        let scaleX = (absDistanceFromCenter * (minScale.x - 1)) / flow.itemSize.width + 1
-        let scaleY = (absDistanceFromCenter * (minScale.y - 1)) / flow.itemSize.width + 1
-        
-        attributes.alpha = (absDistanceFromCenter * (minAlpha - 1)) / flow.itemSize.width + 1
-        attributes.transform = CGAffineTransform(scaleX: scaleX,y: scaleY)
+    public func transformCustomCalc(flow: EKLayoutFlow, attributes: CustomAttributes) {
+//        print(attributes.indexPath, attributes)
     }
+   
+//    public func transform(flow: EKLayoutFlow, attributes: UICollectionViewLayoutAttributes) {
+//        let visibleRect = CGRect.init(origin: flow.collectionView.contentOffset, size: flow.collectionView.frame.size)
+//        let distanceFromCenter = visibleRect.midX - attributes.center.x
+//        let absDistanceFromCenter = min(abs(distanceFromCenter), flow.itemSize.width)
+//        // scale value have error (+- 2px)
+//        let scaleX = (absDistanceFromCenter * (minScale.x - 1)) / flow.itemSize.width + 1
+//        let scaleY = (absDistanceFromCenter * (minScale.y - 1)) / flow.itemSize.width + 1
+//
+//        attributes.alpha = (absDistanceFromCenter * (minAlpha - 1)) / flow.itemSize.width + 1
+//        attributes.transform = CGAffineTransform(scaleX: scaleX,y: scaleY)
+//    }
 }
 

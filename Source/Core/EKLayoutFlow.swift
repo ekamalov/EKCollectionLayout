@@ -34,7 +34,6 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
         
         configurator?.prepare?(layout: self)
         
-        print(itemsCount)
         for item in 0..<itemsCount {
             let indexPath = IndexPath(item: item, section: 0)
             cachedItemsAttributes[indexPath] = createAttributesForItem(at: indexPath)
@@ -53,7 +52,6 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
     
     // MARK: - Invalidate layout
     override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        print(newBounds)
         if newBounds.size != collectionView.bounds.size { cachedItemsAttributes.removeAll() }
         return true
     }
@@ -72,11 +70,10 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
     /// Overrided so that we can store extra information in the layout attributes.
     open override class var layoutAttributesClass: AnyClass { return CustomAttributes.self }
     
-    
     override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var attributes = cachedItemsAttributes.map { $0.value }.filter { $0.frame.intersects(rect) }
         
-         attributes = attributes.compactMap { $0.copy() as? CustomAttributes }.map { attr in
+        attributes = attributes.compactMap { $0.copy() as? CustomAttributes }.map { attr in
             if configurator?.transform != nil {
                 configurator?.transform?(flow: self, attributes: attr)
             }else if configurator?.transformCustomCalc != nil{
