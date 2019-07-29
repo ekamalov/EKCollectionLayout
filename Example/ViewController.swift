@@ -15,8 +15,8 @@ class ViewController: UIViewController {
     lazy var collectionViewA: UICollectionView = {
         let layout = EKLayoutFlow()
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 15
-        layout.configurator = CarouselLayout(scaleItemSize: .init(width: 50,height: 70))
+//        layout.minimumLineSpacing = 20
+        layout.configurator = CarouselLayout(scaleItemSize: .init(width: 80,height: 80))
         layout.itemSize = .init(width: 120, height: 120)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .white
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collectionView == self.collectionView ? 6 : 4
+        return collectionView == self.collectionView ? 6 : 5
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CVCell.identifier, for: indexPath)

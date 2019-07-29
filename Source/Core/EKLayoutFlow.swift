@@ -28,22 +28,28 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
         super.prepare()
         assert(collectionView.numberOfSections == 1, "Multi section aren't supported!")
         
-        let itemsCount = collectionView.numberOfItems(inSection: 0)
-        guard cachedItemsAttributes.isEmpty  else { return }
-        guard cachedItemsAttributes.count != itemsCount else { return }
-        
+        guard cachedItemsAttributes.isEmpty || cachedItemsAttributes.count != collectionView.numberOfItems(inSection: 0) else { return }
         configurator?.prepare?(layout: self)
-        
-        for item in 0..<itemsCount {
+        cachedItemsAttributes = configurator?.prepareCache?(flow: self) ?? self.prepareCache()
+    }
+  
+    private func prepareCache() -> [IndexPath: CustomAttributes] {
+        var cache: [IndexPath: CustomAttributes] = [:]
+        for item in 0..<collectionView.numberOfItems(inSection: 0) {
             let indexPath = IndexPath(item: item, section: 0)
-            cachedItemsAttributes[indexPath] = createAttributesForItem(at: indexPath)
+            cache[indexPath] = createAttributesForItem(at: indexPath)
         }
+        return cache
     }
     
-    private func createAttributesForItem(at indexPath: IndexPath) -> CustomAttributes? {
+    internal func createAttributesForItem(at indexPath: IndexPath) -> CustomAttributes? {
         let attributes = CustomAttributes(forCellWith: indexPath)
         attributes.frame = .init(origin: .init(x: CGFloat(indexPath.item) * (itemSize.width + minimumLineSpacing), y: 0), size: itemSize)
         return attributes
+    }
+    
+    open override var collectionViewContentSize: CGSize {
+        return configurator?.collectionViewContentSize?(flow: self) ?? super.collectionViewContentSize
     }
     
     open override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
@@ -52,8 +58,6 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
     
     // MARK: - Invalidate layout
     override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        print(newBounds)
-        print("content", collectionView.contentOffset.x)
         if newBounds.size != collectionView.bounds.size { cachedItemsAttributes.removeAll() }
         return true
     }
@@ -73,16 +77,15 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
     open override class var layoutAttributesClass: AnyClass { return CustomAttributes.self }
     
     override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        var attributes = cachedItemsAttributes.map { $0.value }.filter { $0.frame.intersects(rect) }
-        
+        var attributes = cachedItemsAttributes.map { $0.value }.filter { $0.frame.intersects(rect) }.sorted(by: { $0.indexPath.row < $1.indexPath.row })
         attributes = attributes.compactMap { $0.copy() as? CustomAttributes }.map { attr in
             if configurator?.transform != nil {
                 configurator?.transform?(flow: self, attributes: attr)
             }else if configurator?.transformCustomCalc != nil{
                 let distance: CGFloat = collectionView.frame.width
                 let itemOffset: CGFloat = attr.center.x - collectionView.contentOffset.x
-                attr.startOffset = (attr.frame.origin.x - collectionView.contentOffset.x) / attr.frame.width
-                attr.endOffset = (attr.frame.origin.x - collectionView.contentOffset.x - collectionView.frame.width) / attr.frame.width
+                attr.startOffset = (attr.frame.origin.x - collectionView.contentOffset.x) / attr.bounds.width
+                attr.endOffset = (attr.frame.origin.x - collectionView.contentOffset.x - collectionView.frame.width) / attr.bounds.width
                 attr.middleOffset = itemOffset / distance - 0.5
                 // Cache the contentView since we're going to use it a lot.
                 if attr.contentView == nil, let c = collectionView.cellForItem(at: attr.indexPath)?.contentView {
