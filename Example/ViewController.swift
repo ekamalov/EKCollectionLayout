@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     lazy var collectionViewA: UICollectionView = {
         let layout = EKLayoutFlow()
         layout.scrollDirection = .horizontal
-//        layout.minimumLineSpacing = 20
+        layout.minimumLineSpacing = 20
         layout.configurator = CarouselLayout(scaleItemSize: .init(width: 80,height: 80))
         layout.itemSize = .init(width: 120, height: 120)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
