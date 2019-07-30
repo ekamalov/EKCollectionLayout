@@ -15,8 +15,6 @@ public class CarouselLayout {
     /// The scaled item size
     public var scaleItemSize:CGSize
     
-    private var minScale:CGPoint = .zero
-    
     public init(minAlpha: CGFloat = 0.4, scaleItemSize:CGSize) {
         self.minAlpha = minAlpha
         self.scaleItemSize = scaleItemSize
@@ -27,13 +25,12 @@ extension CarouselLayout: LayoutAttributesConfigurator {
     public func prepare(layout flow: EKLayoutFlow) {
         assert(flow.scrollDirection == .horizontal, "Horizontal scroll direction aren't supported!")
         if flow.collectionView.decelerationRate != .fast  { flow.collectionView.decelerationRate = .fast }
-        
-        self.minScale = scaleItemSize.scale(other: flow.itemSize)
     }
     
     public func collectionViewContentSize(flow: EKLayoutFlow) -> CGSize {
-        let centerOffset: CGFloat = (flow.collectionView.bounds.width - flow.itemSize.width) / 2
-        let contentWidth: CGFloat = 2 * centerOffset + flow.itemSize.width + CGFloat(flow.collectionView.numberOfItems(inSection: 0) - 1) * scaleItemSize.width
+        let residueContent:CGFloat = flow.collectionView.bounds.width - flow.itemSize.width
+        let itemsCount = CGFloat(flow.collectionView.numberOfItems(inSection: 0) - 1)
+        let contentWidth:CGFloat = residueContent + flow.itemSize.width + (itemsCount * scaleItemSize.width)
         return CGSize(width: contentWidth, height: flow.collectionView.bounds.height)
     }
     
@@ -46,39 +43,40 @@ extension CarouselLayout: LayoutAttributesConfigurator {
     
     public func transform(flow: EKLayoutFlow, attributes: UICollectionViewLayoutAttributes) {
         let visibleRect = CGRect(origin: flow.collectionView.contentOffset, size: flow.collectionView.bounds.size)
-        let leftSideInset:CGFloat = (flow.collectionView.bounds.width -  flow.itemSize.height) / 2
         
-        let scaleCellOffsetX:CGFloat = leftSideInset + CGFloat(attributes.indexPath.row) * scaleItemSize.width
+        let leftInset:CGFloat = (flow.collectionView.bounds.width -  flow.itemSize.height) / 2
+        let scaledCellOffsetX:CGFloat = leftInset + CGFloat(attributes.indexPath.row) * scaleItemSize.width
+        let distanceBetweenCellAndBoundCenters = scaledCellOffsetX - visibleRect.midX + (flow.itemSize.width / 2)
         
-        let distanceBetweenCellAndBoundCenters = scaleCellOffsetX - visibleRect.midX + flow.itemSize.width / 2
-        let normalizedCenterScale = distanceBetweenCellAndBoundCenters / scaleItemSize.width
+        let scale = distanceBetweenCellAndBoundCenters / scaleItemSize.width
+        let scaleAbs = abs(scale)
         
-        let deltaX: CGFloat = flow.itemSize.width - scaleItemSize.width
-        
-        let isCenterCell: Bool = fabsf(Float(normalizedCenterScale)) < 1.0
-        let isNormalCellOnRightOfCenter: Bool = normalizedCenterScale > 0.0 && !isCenterCell
-        let isNormalCellOnLeftOfCenter: Bool = normalizedCenterScale < 0.0 && !isCenterCell
+        let isCenterCell: Bool = scaleAbs < 1.0
+        let isNormalCellOnRightOfCenter: Bool = scale > 0.0 && !isCenterCell
+        let isNormalCellOnLeftOfCenter: Bool = scale < 0.0 && !isCenterCell
 
+         let deltaX: CGFloat = flow.itemSize.width - scaleItemSize.width
+        
+        print(attributes.indexPath, isCenterCell, isNormalCellOnRightOfCenter, isNormalCellOnLeftOfCenter)
+        
         if isCenterCell {
-            let incrementX: CGFloat = (1.0 - CGFloat(abs(Float(normalizedCenterScale)))) * deltaX
-            let minimumLineSpacing = calcRangePercent(min: 0, max: flow.minimumLineSpacing, percentage: normalizedCenterScale, reverse: true)
-            let offsetX: CGFloat = normalizedCenterScale > 0 ? deltaX - incrementX  + minimumLineSpacing : -minimumLineSpacing
-            attributes.frame.origin.x = scaleCellOffsetX + offsetX
+            let incrementX: CGFloat = (1.0 - scaleAbs) * deltaX
+            let minimumLineSpacing = self.calcRangePercent(min: 0, max: flow.minimumLineSpacing, percentage: scale, reverse: true)
+            let offsetX: CGFloat = scale > 0 ? deltaX - incrementX  + minimumLineSpacing : -minimumLineSpacing
+            attributes.frame.origin.x = scaledCellOffsetX + offsetX
         } else if isNormalCellOnRightOfCenter {
-            attributes.frame.origin.x = scaleCellOffsetX + deltaX + abs(normalizedCenterScale) * flow.minimumLineSpacing
+            attributes.frame.origin.x = scaledCellOffsetX + deltaX + (scaleAbs * flow.minimumLineSpacing)
         } else if isNormalCellOnLeftOfCenter {
-            attributes.frame.origin.x = scaleCellOffsetX - abs(normalizedCenterScale) * flow.minimumLineSpacing
+            attributes.frame.origin.x = scaledCellOffsetX - (scaleAbs * flow.minimumLineSpacing)
         }
         
-       
-        print((visibleRect.height - scaleItemSize.height) / 2, (visibleRect.height - flow.itemSize.height) / 2)
         
-        attributes.frame.origin.y = calcRangePercent(min: (visibleRect.height - flow.itemSize.height) / 2, max: (visibleRect.height - scaleItemSize.height) / 2, percentage: normalizedCenterScale, reverse: true)
+        attributes.frame.origin.y = self.calcRangePercent(min: (visibleRect.height - flow.itemSize.height) / 2, max: (visibleRect.height - scaleItemSize.height) / 2, percentage: scale, reverse: true)
         
-        attributes.frame.size = .init(width: calcRangePercent(min: scaleItemSize.width, max: flow.itemSize.width, percentage: normalizedCenterScale),
-                                      height: calcRangePercent(min: scaleItemSize.height, max: flow.itemSize.height, percentage: normalizedCenterScale))
+        attributes.frame.size = .init(width: self.calcRangePercent(min: scaleItemSize.width, max: flow.itemSize.width, percentage: scale),
+                                      height: self.calcRangePercent(min: scaleItemSize.height, max: flow.itemSize.height, percentage: scale))
         
-        attributes.alpha = calcRangePercent(min: minAlpha, max: 1, percentage: normalizedCenterScale)
+        attributes.alpha = self.calcRangePercent(min: minAlpha, max: 1, percentage: scale)
     }
     
     private func calcRangePercent(min:CGFloat, max:CGFloat, percentage:CGFloat, reverse:Bool = false) -> CGFloat {
