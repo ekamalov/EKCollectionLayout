@@ -44,20 +44,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(collectionViewA)
-//        self.view.addSubview(collectionView)
+        self.view.addSubview(collectionView)
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionViewA.frame = CGRect(x: 0, y:50, width: view.frame.width, height: 130)
-        collectionView.frame = CGRect(x: 0, y: collectionViewA.frame.maxY + 20, width: view.frame.width, height: 250)
-
+        collectionView.frame = CGRect(x: 0, y: collectionViewA.frame.maxY + 50, width: view.frame.width, height: 250)
     }
 }
 
 
 extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collectionView == self.collectionView ? 6 : 5
+        return collectionView == self.collectionView ? 19 : 5
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CVCell.identifier, for: indexPath)

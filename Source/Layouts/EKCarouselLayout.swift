@@ -15,7 +15,7 @@ public class CarouselLayout {
     /// The scaled item size
     public var scaleItemSize:CGSize
     
-    public init(minAlpha: CGFloat = 0.4, scaleItemSize:CGSize) {
+    public init(minAlpha: CGFloat = 0.5, scaleItemSize:CGSize) {
         self.minAlpha = minAlpha
         self.scaleItemSize = scaleItemSize
     }
@@ -40,38 +40,31 @@ extension CarouselLayout: LayoutAttributesConfigurator {
         return CGPoint(x: xOffset, y: 0)
     }
     
-    
     public func transform(flow: EKLayoutFlow, attributes: UICollectionViewLayoutAttributes) {
         let visibleRect = CGRect(origin: flow.collectionView.contentOffset, size: flow.collectionView.bounds.size)
         
-        let leftInset:CGFloat = (flow.collectionView.bounds.width -  flow.itemSize.height) / 2
+        let leftInset:CGFloat = (flow.collectionView.bounds.width -  flow.itemSize.width).half
         let scaledCellOffsetX:CGFloat = leftInset + CGFloat(attributes.indexPath.row) * scaleItemSize.width
-        let distanceBetweenCellAndBoundCenters = scaledCellOffsetX - visibleRect.midX + (flow.itemSize.width / 2)
+        let distanceBetweenCellAndBoundCenters = scaledCellOffsetX - visibleRect.midX + flow.itemSize.width.half
         
         let scale = distanceBetweenCellAndBoundCenters / scaleItemSize.width
         let scaleAbs = abs(scale)
         
+        let deltaX: CGFloat = flow.itemSize.width - scaleItemSize.width
+        
         let isCenterCell: Bool = scaleAbs < 1.0
-        let isNormalCellOnRightOfCenter: Bool = scale > 0.0 && !isCenterCell
-        let isNormalCellOnLeftOfCenter: Bool = scale < 0.0 && !isCenterCell
-
-         let deltaX: CGFloat = flow.itemSize.width - scaleItemSize.width
-        
-        print(attributes.indexPath, isCenterCell, isNormalCellOnRightOfCenter, isNormalCellOnLeftOfCenter)
-        
         if isCenterCell {
             let incrementX: CGFloat = (1.0 - scaleAbs) * deltaX
             let minimumLineSpacing = self.calcRangePercent(min: 0, max: flow.minimumLineSpacing, percentage: scale, reverse: true)
-            let offsetX: CGFloat = scale > 0 ? deltaX - incrementX  + minimumLineSpacing : -minimumLineSpacing
+            let offsetX: CGFloat = scale > 0 ? deltaX - incrementX + minimumLineSpacing : -minimumLineSpacing
             attributes.frame.origin.x = scaledCellOffsetX + offsetX
-        } else if isNormalCellOnRightOfCenter {
+        }else if scale > 0.0 && !isCenterCell { // right cells
             attributes.frame.origin.x = scaledCellOffsetX + deltaX + (scaleAbs * flow.minimumLineSpacing)
-        } else if isNormalCellOnLeftOfCenter {
+        }else if scale < 0.0 && !isCenterCell { // left cells
             attributes.frame.origin.x = scaledCellOffsetX - (scaleAbs * flow.minimumLineSpacing)
         }
         
-        
-        attributes.frame.origin.y = self.calcRangePercent(min: (visibleRect.height - flow.itemSize.height) / 2, max: (visibleRect.height - scaleItemSize.height) / 2, percentage: scale, reverse: true)
+        attributes.frame.origin.y = self.calcRangePercent(min: (visibleRect.height - flow.itemSize.height).half, max: (visibleRect.height - scaleItemSize.height).half, percentage: scale, reverse: true)
         
         attributes.frame.size = .init(width: self.calcRangePercent(min: scaleItemSize.width, max: flow.itemSize.width, percentage: scale),
                                       height: self.calcRangePercent(min: scaleItemSize.height, max: flow.itemSize.height, percentage: scale))
@@ -83,6 +76,10 @@ extension CarouselLayout: LayoutAttributesConfigurator {
         let tmpPercentage = CGFloat.minimum(abs(percentage), 1.0)
         return reverse ?  ((max - min) * tmpPercentage) + min :  ((min - max) * tmpPercentage) + max
     }
-    
 }
 
+extension CGFloat {
+    var half: CGFloat {
+        return self / 2
+    }
+}
