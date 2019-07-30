@@ -44,7 +44,7 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
     
     internal func createAttributesForItem(at indexPath: IndexPath) -> CustomAttributes? {
         let attributes = CustomAttributes(forCellWith: indexPath)
-        attributes.frame = .init(origin: .init(x: CGFloat(indexPath.item) * (itemSize.width + minimumLineSpacing), y: 0), size: itemSize)
+        attributes.frame = super.initialLayoutAttributesForAppearingItem(at: indexPath)?.frame ?? .zero
         return attributes
     }
     
@@ -69,7 +69,7 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
     
     // MARK: - Item
     override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        guard let attributes = cachedItemsAttributes[indexPath] else { fatalError("No attributes cached") }
+        guard let attributes = cachedItemsAttributes[indexPath] else { return super.layoutAttributesForItem(at: indexPath) }
         return attributes
     }
     
