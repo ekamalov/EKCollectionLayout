@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		450AACFE22B645E200D50833 /* EKCollectionLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 450AACFC22B645E200D50833 /* EKCollectionLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		450AAD0B22B646D100D50833 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD0A22B646D100D50833 /* AppDelegate.swift */; };
-		450AAD0D22B646D100D50833 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD0C22B646D100D50833 /* ViewController.swift */; };
-		450AAD1022B646D100D50833 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 450AAD0E22B646D100D50833 /* Main.storyboard */; };
+		450AAD0D22B646D100D50833 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD0C22B646D100D50833 /* MainViewController.swift */; };
 		450AAD1222B646D300D50833 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 450AAD1122B646D300D50833 /* Assets.xcassets */; };
 		450AAD1522B646D300D50833 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 450AAD1322B646D300D50833 /* LaunchScreen.storyboard */; };
 		450AAD1C22B6487D00D50833 /* LayoutAttributesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD1B22B6487D00D50833 /* LayoutAttributesConfigurator.swift */; };
@@ -19,11 +18,23 @@
 		450AAD2122B648ED00D50833 /* EKLayoutFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD1F22B648ED00D50833 /* EKLayoutFlow.swift */; };
 		450AAD2322B6491D00D50833 /* CustomAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD2222B6491D00D50833 /* CustomAttributes.swift */; };
 		450AAD2422B6491D00D50833 /* CustomAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD2222B6491D00D50833 /* CustomAttributes.swift */; };
-		450AAD2922B65A8800D50833 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD0C22B646D100D50833 /* ViewController.swift */; };
+		450AAD2922B65A8800D50833 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD0C22B646D100D50833 /* MainViewController.swift */; };
 		450AAD2B22B78CDA00D50833 /* EKCarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD2A22B78CDA00D50833 /* EKCarouselLayout.swift */; };
 		450AAD2C22B78CDA00D50833 /* EKCarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD2A22B78CDA00D50833 /* EKCarouselLayout.swift */; };
+		4513345222F15D8900814D70 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 4513345122F15D8900814D70 /* Cartfile */; };
+		45455E7822F1D8C2002C6C7B /* HitFeed.json in Resources */ = {isa = PBXBuildFile; fileRef = 45455E7722F1D8C2002C6C7B /* HitFeed.json */; };
+		45455E7C22F1E1CC002C6C7B /* Genres.json in Resources */ = {isa = PBXBuildFile; fileRef = 45455E7B22F1E1CC002C6C7B /* Genres.json */; };
+		45455E8022F1E2DF002C6C7B /* Persons.json in Resources */ = {isa = PBXBuildFile; fileRef = 45455E7F22F1E2DF002C6C7B /* Persons.json */; };
+		45455E8222F1E442002C6C7B /* Carousel.json in Resources */ = {isa = PBXBuildFile; fileRef = 45455E8122F1E442002C6C7B /* Carousel.json */; };
+		45455E8422F1E457002C6C7B /* Carousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455E8322F1E457002C6C7B /* Carousel.swift */; };
+		45455E8622F1E463002C6C7B /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455E8522F1E463002C6C7B /* Genres.swift */; };
+		45455E8822F1E470002C6C7B /* Persons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455E8722F1E470002C6C7B /* Persons.swift */; };
 		455D54D722E6228C004148CD /* EKAppStoreLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D54D622E6228C004148CD /* EKAppStoreLayout.swift */; };
 		455D54D822E6228C004148CD /* EKAppStoreLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D54D622E6228C004148CD /* EKAppStoreLayout.swift */; };
+		45E8458F22F1CD92004342D3 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8458E22F1CD92004342D3 /* APIService.swift */; };
+		45E8459122F1CDD1004342D3 /* HitFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8459022F1CDD1004342D3 /* HitFeed.swift */; };
+		45E8459822F1D792004342D3 /* Gilroy-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45E8459622F1D792004342D3 /* Gilroy-SemiBold.ttf */; };
+		45E8459922F1D792004342D3 /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45E8459722F1D792004342D3 /* Gilroy-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +43,7 @@
 		450AACFD22B645E200D50833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		450AAD0822B646D100D50833 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		450AAD0A22B646D100D50833 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		450AAD0C22B646D100D50833 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		450AAD0F22B646D100D50833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		450AAD0C22B646D100D50833 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		450AAD1122B646D300D50833 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		450AAD1422B646D300D50833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		450AAD1622B646D300D50833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -41,7 +51,19 @@
 		450AAD1F22B648ED00D50833 /* EKLayoutFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKLayoutFlow.swift; sourceTree = "<group>"; };
 		450AAD2222B6491D00D50833 /* CustomAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAttributes.swift; sourceTree = "<group>"; };
 		450AAD2A22B78CDA00D50833 /* EKCarouselLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKCarouselLayout.swift; sourceTree = "<group>"; };
+		4513345122F15D8900814D70 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile; path = "../../../../../../../../System/Volumes/Data/Users/ek/Library/CloudStorage/iCloud Drive/Documents/My Frameworks/EKCollectionLayout/Cartfile"; sourceTree = "<group>"; };
+		45455E7722F1D8C2002C6C7B /* HitFeed.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = HitFeed.json; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Resources/HitFeed.json"; sourceTree = "<group>"; };
+		45455E7B22F1E1CC002C6C7B /* Genres.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Genres.json; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Resources/Genres.json"; sourceTree = "<group>"; };
+		45455E7F22F1E2DF002C6C7B /* Persons.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Persons.json; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Resources/Persons.json"; sourceTree = "<group>"; };
+		45455E8122F1E442002C6C7B /* Carousel.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Carousel.json; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Resources/Carousel.json"; sourceTree = "<group>"; };
+		45455E8322F1E457002C6C7B /* Carousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Carousel.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Models/Carousel.swift"; sourceTree = "<group>"; };
+		45455E8522F1E463002C6C7B /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Genres.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Models/Genres.swift"; sourceTree = "<group>"; };
+		45455E8722F1E470002C6C7B /* Persons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Persons.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Models/Persons.swift"; sourceTree = "<group>"; };
 		455D54D622E6228C004148CD /* EKAppStoreLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKAppStoreLayout.swift; path = "../../../../../../../../../../System/Volumes/Data/Users/ek/Library/CloudStorage/iCloud Drive/Documents/My Frameworks/EKCollectionLayout/Source/Layouts/EKAppStoreLayout.swift"; sourceTree = "<group>"; };
+		45E8458E22F1CD92004342D3 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIService.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Service/APIService.swift"; sourceTree = "<group>"; };
+		45E8459022F1CDD1004342D3 /* HitFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HitFeed.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Models/HitFeed.swift"; sourceTree = "<group>"; };
+		45E8459622F1D792004342D3 /* Gilroy-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-SemiBold.ttf"; sourceTree = "<group>"; };
+		45E8459722F1D792004342D3 /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +87,7 @@
 		450AACEF22B645E200D50833 = {
 			isa = PBXGroup;
 			children = (
+				4513345122F15D8900814D70 /* Cartfile */,
 				450AAD0922B646D100D50833 /* Example */,
 				450AACFB22B645E200D50833 /* Source */,
 				450AACFA22B645E200D50833 /* Products */,
@@ -95,12 +118,12 @@
 		450AAD0922B646D100D50833 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				450AAD0A22B646D100D50833 /* AppDelegate.swift */,
-				450AAD0C22B646D100D50833 /* ViewController.swift */,
-				450AAD0E22B646D100D50833 /* Main.storyboard */,
-				450AAD1122B646D300D50833 /* Assets.xcassets */,
-				450AAD1322B646D300D50833 /* LaunchScreen.storyboard */,
-				450AAD1622B646D300D50833 /* Info.plist */,
+				45E8459B22F1D82F004342D3 /* Views */,
+				45E8459A22F1D828004342D3 /* Controllers */,
+				45E8458322F1CA70004342D3 /* Service */,
+				45E8458422F1CA7A004342D3 /* Models */,
+				45E8459222F1D258004342D3 /* Resources */,
+				45E8459C22F1D83A004342D3 /* Supporting Files */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -129,6 +152,73 @@
 				455D54D622E6228C004148CD /* EKAppStoreLayout.swift */,
 			);
 			path = Layouts;
+			sourceTree = "<group>";
+		};
+		45E8458322F1CA70004342D3 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				45E8458E22F1CD92004342D3 /* APIService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		45E8458422F1CA7A004342D3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				45E8459022F1CDD1004342D3 /* HitFeed.swift */,
+				45455E8322F1E457002C6C7B /* Carousel.swift */,
+				45455E8522F1E463002C6C7B /* Genres.swift */,
+				45455E8722F1E470002C6C7B /* Persons.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		45E8459222F1D258004342D3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				450AAD1122B646D300D50833 /* Assets.xcassets */,
+				45E8459522F1D792004342D3 /* Fonts */,
+				45455E7722F1D8C2002C6C7B /* HitFeed.json */,
+				45455E7B22F1E1CC002C6C7B /* Genres.json */,
+				45455E7F22F1E2DF002C6C7B /* Persons.json */,
+				45455E8122F1E442002C6C7B /* Carousel.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		45E8459522F1D792004342D3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				45E8459622F1D792004342D3 /* Gilroy-SemiBold.ttf */,
+				45E8459722F1D792004342D3 /* Gilroy-Bold.ttf */,
+			);
+			name = Fonts;
+			path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Resources/Fonts";
+			sourceTree = "<group>";
+		};
+		45E8459A22F1D828004342D3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				450AAD0C22B646D100D50833 /* MainViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		45E8459B22F1D82F004342D3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		45E8459C22F1D83A004342D3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				450AAD0A22B646D100D50833 /* AppDelegate.swift */,
+				450AAD1322B646D300D50833 /* LaunchScreen.storyboard */,
+				450AAD1622B646D300D50833 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +260,7 @@
 				450AAD0422B646D100D50833 /* Sources */,
 				450AAD0522B646D100D50833 /* Frameworks */,
 				450AAD0622B646D100D50833 /* Resources */,
+				4513345322F15DFF00814D70 /* Carthage script */,
 			);
 			buildRules = (
 			);
@@ -231,19 +322,48 @@
 			buildActionMask = 2147483647;
 			files = (
 				450AAD1522B646D300D50833 /* LaunchScreen.storyboard in Resources */,
+				45E8459822F1D792004342D3 /* Gilroy-SemiBold.ttf in Resources */,
+				45E8459922F1D792004342D3 /* Gilroy-Bold.ttf in Resources */,
+				45455E7822F1D8C2002C6C7B /* HitFeed.json in Resources */,
 				450AAD1222B646D300D50833 /* Assets.xcassets in Resources */,
-				450AAD1022B646D100D50833 /* Main.storyboard in Resources */,
+				45455E8222F1E442002C6C7B /* Carousel.json in Resources */,
+				4513345222F15D8900814D70 /* Cartfile in Resources */,
+				45455E8022F1E2DF002C6C7B /* Persons.json in Resources */,
+				45455E7C22F1E1CC002C6C7B /* Genres.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4513345322F15DFF00814D70 /* Carthage script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/EKLayout.framework",
+			);
+			name = "Carthage script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/EKLayout.framework\n",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		450AACF522B645E200D50833 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				450AAD2922B65A8800D50833 /* ViewController.swift in Sources */,
+				450AAD2922B65A8800D50833 /* MainViewController.swift in Sources */,
 				450AAD1C22B6487D00D50833 /* LayoutAttributesConfigurator.swift in Sources */,
 				450AAD2322B6491D00D50833 /* CustomAttributes.swift in Sources */,
 				455D54D722E6228C004148CD /* EKAppStoreLayout.swift in Sources */,
@@ -256,12 +376,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				450AAD0D22B646D100D50833 /* ViewController.swift in Sources */,
+				450AAD0D22B646D100D50833 /* MainViewController.swift in Sources */,
 				450AAD2122B648ED00D50833 /* EKLayoutFlow.swift in Sources */,
 				450AAD1D22B6487D00D50833 /* LayoutAttributesConfigurator.swift in Sources */,
+				45455E8422F1E457002C6C7B /* Carousel.swift in Sources */,
+				45455E8622F1E463002C6C7B /* Genres.swift in Sources */,
 				450AAD2422B6491D00D50833 /* CustomAttributes.swift in Sources */,
+				45455E8822F1E470002C6C7B /* Persons.swift in Sources */,
 				455D54D822E6228C004148CD /* EKAppStoreLayout.swift in Sources */,
 				450AAD0B22B646D100D50833 /* AppDelegate.swift in Sources */,
+				45E8458F22F1CD92004342D3 /* APIService.swift in Sources */,
+				45E8459122F1CDD1004342D3 /* HitFeed.swift in Sources */,
 				450AAD2C22B78CDA00D50833 /* EKCarouselLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,14 +394,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		450AAD0E22B646D100D50833 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				450AAD0F22B646D100D50833 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		450AAD1322B646D300D50833 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -469,7 +586,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4DFUD88BP;
-				INFOPLIST_FILE = Example/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Example/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -487,7 +604,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4DFUD88BP;
-				INFOPLIST_FILE = Example/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Example/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
