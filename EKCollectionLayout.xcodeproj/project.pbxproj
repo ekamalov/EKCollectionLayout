@@ -21,7 +21,6 @@
 		450AAD2922B65A8800D50833 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD0C22B646D100D50833 /* MainViewController.swift */; };
 		450AAD2B22B78CDA00D50833 /* EKCarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD2A22B78CDA00D50833 /* EKCarouselLayout.swift */; };
 		450AAD2C22B78CDA00D50833 /* EKCarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD2A22B78CDA00D50833 /* EKCarouselLayout.swift */; };
-		4513345222F15D8900814D70 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 4513345122F15D8900814D70 /* Cartfile */; };
 		45455E7822F1D8C2002C6C7B /* HitFeed.json in Resources */ = {isa = PBXBuildFile; fileRef = 45455E7722F1D8C2002C6C7B /* HitFeed.json */; };
 		45455E7C22F1E1CC002C6C7B /* Genres.json in Resources */ = {isa = PBXBuildFile; fileRef = 45455E7B22F1E1CC002C6C7B /* Genres.json */; };
 		45455E8022F1E2DF002C6C7B /* Persons.json in Resources */ = {isa = PBXBuildFile; fileRef = 45455E7F22F1E2DF002C6C7B /* Persons.json */; };
@@ -29,8 +28,20 @@
 		45455E8422F1E457002C6C7B /* Carousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455E8322F1E457002C6C7B /* Carousel.swift */; };
 		45455E8622F1E463002C6C7B /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455E8522F1E463002C6C7B /* Genres.swift */; };
 		45455E8822F1E470002C6C7B /* Persons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455E8722F1E470002C6C7B /* Persons.swift */; };
-		455D54D722E6228C004148CD /* EKAppStoreLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D54D622E6228C004148CD /* EKAppStoreLayout.swift */; };
-		455D54D822E6228C004148CD /* EKAppStoreLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455D54D622E6228C004148CD /* EKAppStoreLayout.swift */; };
+		45455E8A22F1F14E002C6C7B /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455E8922F1F14E002C6C7B /* AppAppearance.swift */; };
+		45455EA222F1F6F4002C6C7B /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 45455EA122F1F6F4002C6C7B /* Cartfile */; };
+		45455EA422F1F7B2002C6C7B /* EKAppStoreLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455EA322F1F7B2002C6C7B /* EKAppStoreLayout.swift */; };
+		45455EA622F1F82D002C6C7B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455EA522F1F82D002C6C7B /* Extensions.swift */; };
+		45455EA922F1F903002C6C7B /* EKLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45455EA722F1F903002C6C7B /* EKLayout.framework */; };
+		45455EAB22F1F976002C6C7B /* EKBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45455EA822F1F903002C6C7B /* EKBuilder.framework */; };
+		45455EBC22F34B6E002C6C7B /* CarouselCellSub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455EBB22F34B6E002C6C7B /* CarouselCellSub.swift */; };
+		45455EBE22F34B9A002C6C7B /* HitFeedSubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455EBD22F34B9A002C6C7B /* HitFeedSubCell.swift */; };
+		45455EC022F34EC6002C6C7B /* PersonSubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455EBF22F34EC6002C6C7B /* PersonSubCell.swift */; };
+		45455EC622F358AC002C6C7B /* HitFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455EC122F358AC002C6C7B /* HitFeedCell.swift */; };
+		45455EC722F358AC002C6C7B /* MainHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455EC222F358AC002C6C7B /* MainHeaderCell.swift */; };
+		45455EC822F358AC002C6C7B /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455EC322F358AC002C6C7B /* PersonCell.swift */; };
+		45455EC922F358AC002C6C7B /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455EC422F358AC002C6C7B /* GenreCell.swift */; };
+		45455ECA22F358AC002C6C7B /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455EC522F358AC002C6C7B /* CarouselCell.swift */; };
 		45E8458F22F1CD92004342D3 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8458E22F1CD92004342D3 /* APIService.swift */; };
 		45E8459122F1CDD1004342D3 /* HitFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8459022F1CDD1004342D3 /* HitFeed.swift */; };
 		45E8459822F1D792004342D3 /* Gilroy-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45E8459622F1D792004342D3 /* Gilroy-SemiBold.ttf */; };
@@ -51,7 +62,6 @@
 		450AAD1F22B648ED00D50833 /* EKLayoutFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKLayoutFlow.swift; sourceTree = "<group>"; };
 		450AAD2222B6491D00D50833 /* CustomAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAttributes.swift; sourceTree = "<group>"; };
 		450AAD2A22B78CDA00D50833 /* EKCarouselLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKCarouselLayout.swift; sourceTree = "<group>"; };
-		4513345122F15D8900814D70 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile; path = "../../../../../../../../System/Volumes/Data/Users/ek/Library/CloudStorage/iCloud Drive/Documents/My Frameworks/EKCollectionLayout/Cartfile"; sourceTree = "<group>"; };
 		45455E7722F1D8C2002C6C7B /* HitFeed.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = HitFeed.json; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Resources/HitFeed.json"; sourceTree = "<group>"; };
 		45455E7B22F1E1CC002C6C7B /* Genres.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Genres.json; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Resources/Genres.json"; sourceTree = "<group>"; };
 		45455E7F22F1E2DF002C6C7B /* Persons.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Persons.json; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Resources/Persons.json"; sourceTree = "<group>"; };
@@ -59,7 +69,20 @@
 		45455E8322F1E457002C6C7B /* Carousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Carousel.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Models/Carousel.swift"; sourceTree = "<group>"; };
 		45455E8522F1E463002C6C7B /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Genres.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Models/Genres.swift"; sourceTree = "<group>"; };
 		45455E8722F1E470002C6C7B /* Persons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Persons.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Models/Persons.swift"; sourceTree = "<group>"; };
-		455D54D622E6228C004148CD /* EKAppStoreLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EKAppStoreLayout.swift; path = "../../../../../../../../../../System/Volumes/Data/Users/ek/Library/CloudStorage/iCloud Drive/Documents/My Frameworks/EKCollectionLayout/Source/Layouts/EKAppStoreLayout.swift"; sourceTree = "<group>"; };
+		45455E8922F1F14E002C6C7B /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppAppearance.swift; path = "../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/AppAppearance.swift"; sourceTree = "<group>"; };
+		45455EA122F1F6F4002C6C7B /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile; path = "../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Cartfile"; sourceTree = "<group>"; };
+		45455EA322F1F7B2002C6C7B /* EKAppStoreLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EKAppStoreLayout.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Source/Layouts/EKAppStoreLayout.swift"; sourceTree = "<group>"; };
+		45455EA522F1F82D002C6C7B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = "../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Extensions.swift"; sourceTree = "<group>"; };
+		45455EA722F1F903002C6C7B /* EKLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EKLayout.framework; path = Carthage/Build/iOS/EKLayout.framework; sourceTree = "<group>"; };
+		45455EA822F1F903002C6C7B /* EKBuilder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EKBuilder.framework; path = Carthage/Build/iOS/EKBuilder.framework; sourceTree = "<group>"; };
+		45455EBB22F34B6E002C6C7B /* CarouselCellSub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CarouselCellSub.swift; path = "../../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Views/SubCells/CarouselCellSub.swift"; sourceTree = "<group>"; };
+		45455EBD22F34B9A002C6C7B /* HitFeedSubCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HitFeedSubCell.swift; path = "../../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Views/SubCells/HitFeedSubCell.swift"; sourceTree = "<group>"; };
+		45455EBF22F34EC6002C6C7B /* PersonSubCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PersonSubCell.swift; path = "../../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Views/SubCells/PersonSubCell.swift"; sourceTree = "<group>"; };
+		45455EC122F358AC002C6C7B /* HitFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HitFeedCell.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Views/HitFeedCell.swift"; sourceTree = "<group>"; };
+		45455EC222F358AC002C6C7B /* MainHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainHeaderCell.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Views/MainHeaderCell.swift"; sourceTree = "<group>"; };
+		45455EC322F358AC002C6C7B /* PersonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonCell.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Views/PersonCell.swift"; sourceTree = "<group>"; };
+		45455EC422F358AC002C6C7B /* GenreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenreCell.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Views/GenreCell.swift"; sourceTree = "<group>"; };
+		45455EC522F358AC002C6C7B /* CarouselCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarouselCell.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Views/CarouselCell.swift"; sourceTree = "<group>"; };
 		45E8458E22F1CD92004342D3 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIService.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Service/APIService.swift"; sourceTree = "<group>"; };
 		45E8459022F1CDD1004342D3 /* HitFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HitFeed.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Models/HitFeed.swift"; sourceTree = "<group>"; };
 		45E8459622F1D792004342D3 /* Gilroy-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -78,6 +101,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45455EA922F1F903002C6C7B /* EKLayout.framework in Frameworks */,
+				45455EAB22F1F976002C6C7B /* EKBuilder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,10 +112,11 @@
 		450AACEF22B645E200D50833 = {
 			isa = PBXGroup;
 			children = (
-				4513345122F15D8900814D70 /* Cartfile */,
+				45455EA122F1F6F4002C6C7B /* Cartfile */,
 				450AAD0922B646D100D50833 /* Example */,
 				450AACFB22B645E200D50833 /* Source */,
 				450AACFA22B645E200D50833 /* Products */,
+				45455E9122F1F29A002C6C7B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,6 +150,8 @@
 				45E8458422F1CA7A004342D3 /* Models */,
 				45E8459222F1D258004342D3 /* Resources */,
 				45E8459C22F1D83A004342D3 /* Supporting Files */,
+				45455E8922F1F14E002C6C7B /* AppAppearance.swift */,
+				45455EA522F1F82D002C6C7B /* Extensions.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -148,10 +176,29 @@
 		450AAD2822B64B2F00D50833 /* Layouts */ = {
 			isa = PBXGroup;
 			children = (
+				45455EA322F1F7B2002C6C7B /* EKAppStoreLayout.swift */,
 				450AAD2A22B78CDA00D50833 /* EKCarouselLayout.swift */,
-				455D54D622E6228C004148CD /* EKAppStoreLayout.swift */,
 			);
 			path = Layouts;
+			sourceTree = "<group>";
+		};
+		45455E9122F1F29A002C6C7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				45455EA822F1F903002C6C7B /* EKBuilder.framework */,
+				45455EA722F1F903002C6C7B /* EKLayout.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		45455EBA22F34B60002C6C7B /* SubCells */ = {
+			isa = PBXGroup;
+			children = (
+				45455EBB22F34B6E002C6C7B /* CarouselCellSub.swift */,
+				45455EBD22F34B9A002C6C7B /* HitFeedSubCell.swift */,
+				45455EBF22F34EC6002C6C7B /* PersonSubCell.swift */,
+			);
+			path = SubCells;
 			sourceTree = "<group>";
 		};
 		45E8458322F1CA70004342D3 /* Service */ = {
@@ -207,6 +254,12 @@
 		45E8459B22F1D82F004342D3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				45455EC522F358AC002C6C7B /* CarouselCell.swift */,
+				45455EC422F358AC002C6C7B /* GenreCell.swift */,
+				45455EC122F358AC002C6C7B /* HitFeedCell.swift */,
+				45455EC222F358AC002C6C7B /* MainHeaderCell.swift */,
+				45455EC322F358AC002C6C7B /* PersonCell.swift */,
+				45455EBA22F34B60002C6C7B /* SubCells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -321,13 +374,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45455EA222F1F6F4002C6C7B /* Cartfile in Resources */,
 				450AAD1522B646D300D50833 /* LaunchScreen.storyboard in Resources */,
 				45E8459822F1D792004342D3 /* Gilroy-SemiBold.ttf in Resources */,
 				45E8459922F1D792004342D3 /* Gilroy-Bold.ttf in Resources */,
 				45455E7822F1D8C2002C6C7B /* HitFeed.json in Resources */,
 				450AAD1222B646D300D50833 /* Assets.xcassets in Resources */,
 				45455E8222F1E442002C6C7B /* Carousel.json in Resources */,
-				4513345222F15D8900814D70 /* Cartfile in Resources */,
 				45455E8022F1E2DF002C6C7B /* Persons.json in Resources */,
 				45455E7C22F1E1CC002C6C7B /* Genres.json in Resources */,
 			);
@@ -345,12 +398,14 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/EKLayout.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/EKBuilder.framework",
 			);
 			name = "Carthage script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/EKLayout.framework\n",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/EKLayout.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/EKBuilder.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -366,7 +421,6 @@
 				450AAD2922B65A8800D50833 /* MainViewController.swift in Sources */,
 				450AAD1C22B6487D00D50833 /* LayoutAttributesConfigurator.swift in Sources */,
 				450AAD2322B6491D00D50833 /* CustomAttributes.swift in Sources */,
-				455D54D722E6228C004148CD /* EKAppStoreLayout.swift in Sources */,
 				450AAD2022B648ED00D50833 /* EKLayoutFlow.swift in Sources */,
 				450AAD2B22B78CDA00D50833 /* EKCarouselLayout.swift in Sources */,
 			);
@@ -379,15 +433,25 @@
 				450AAD0D22B646D100D50833 /* MainViewController.swift in Sources */,
 				450AAD2122B648ED00D50833 /* EKLayoutFlow.swift in Sources */,
 				450AAD1D22B6487D00D50833 /* LayoutAttributesConfigurator.swift in Sources */,
+				45455E8A22F1F14E002C6C7B /* AppAppearance.swift in Sources */,
+				45455EBE22F34B9A002C6C7B /* HitFeedSubCell.swift in Sources */,
 				45455E8422F1E457002C6C7B /* Carousel.swift in Sources */,
 				45455E8622F1E463002C6C7B /* Genres.swift in Sources */,
 				450AAD2422B6491D00D50833 /* CustomAttributes.swift in Sources */,
 				45455E8822F1E470002C6C7B /* Persons.swift in Sources */,
-				455D54D822E6228C004148CD /* EKAppStoreLayout.swift in Sources */,
+				45455EC022F34EC6002C6C7B /* PersonSubCell.swift in Sources */,
+				45455ECA22F358AC002C6C7B /* CarouselCell.swift in Sources */,
 				450AAD0B22B646D100D50833 /* AppDelegate.swift in Sources */,
 				45E8458F22F1CD92004342D3 /* APIService.swift in Sources */,
+				45455EC622F358AC002C6C7B /* HitFeedCell.swift in Sources */,
+				45455EA622F1F82D002C6C7B /* Extensions.swift in Sources */,
+				45455EBC22F34B6E002C6C7B /* CarouselCellSub.swift in Sources */,
+				45455EA422F1F7B2002C6C7B /* EKAppStoreLayout.swift in Sources */,
+				45455EC822F358AC002C6C7B /* PersonCell.swift in Sources */,
+				45455EC722F358AC002C6C7B /* MainHeaderCell.swift in Sources */,
 				45E8459122F1CDD1004342D3 /* HitFeed.swift in Sources */,
 				450AAD2C22B78CDA00D50833 /* EKCarouselLayout.swift in Sources */,
+				45455EC922F358AC002C6C7B /* GenreCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,6 +650,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4DFUD88BP;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -604,6 +672,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4DFUD88BP;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

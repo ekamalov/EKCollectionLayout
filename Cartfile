@@ -1,1 +1,3 @@
-github "erikkamalov/EKLayout" "1.0.3"
+github "erikkamalov/EKLayout" "1.0.4"
+github "erikkamalov/EKBuilder"
+
