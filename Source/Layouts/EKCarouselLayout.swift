@@ -60,7 +60,7 @@ extension CarouselLayout: LayoutAttributesConfigurator {
         let isCenterCell: Bool = scaleAbs < 1.0
         if isCenterCell {
             let incrementX: CGFloat = (1.0 - scaleAbs) * deltaX
-            let minimumLineSpacing = self.calcRangePercent(min: 0, max: flow.minimumLineSpacing, percentage: scale, reverse: true)
+            let minimumLineSpacing = calcRangePercent(min: 0, max: flow.minimumLineSpacing, percentage: scale, reverse: true)
             let offsetX: CGFloat = scale > 0 ? deltaX - incrementX + minimumLineSpacing : -minimumLineSpacing
             attributes.frame.origin.x = scaledCellOffsetX + offsetX
         }else if scale > 0.0 && !isCenterCell { // right cells
@@ -69,21 +69,22 @@ extension CarouselLayout: LayoutAttributesConfigurator {
             attributes.frame.origin.x = scaledCellOffsetX - (scaleAbs * flow.minimumLineSpacing)
         }
         
-        attributes.frame.origin.y = self.calcRangePercent(min: (visibleRect.height - flow.itemSize.height).half, max: (visibleRect.height - scaleItemSize.height).half, percentage: scale, reverse: true)
+        attributes.frame.origin.y = calcRangePercent(min: (visibleRect.height - flow.itemSize.height).half, max: (visibleRect.height - scaleItemSize.height).half, percentage: scale, reverse: true)
         
-        attributes.frame.size = .init(width: self.calcRangePercent(min: scaleItemSize.width, max: flow.itemSize.width, percentage: scale),
-                                      height: self.calcRangePercent(min: scaleItemSize.height, max: flow.itemSize.height, percentage: scale))
+        attributes.frame.size = .init(width: calcRangePercent(min: scaleItemSize.width, max: flow.itemSize.width, percentage: scale),
+                                      height: calcRangePercent(min: scaleItemSize.height, max: flow.itemSize.height, percentage: scale))
         
-        attributes.alpha = self.calcRangePercent(min: minAlpha, max: 1, percentage: scale)
+        attributes.alpha = calcRangePercent(min: minAlpha, max: 1, percentage: scale)
     }
     
-    private func calcRangePercent(min:CGFloat, max:CGFloat, percentage:CGFloat, reverse:Bool = false) -> CGFloat {
-        let tmpPercentage = CGFloat.minimum(abs(percentage), 1.0)
-        return reverse ?  ((max - min) * tmpPercentage) + min :  ((min - max) * tmpPercentage) + max
-    }
 }
 
-extension CGFloat {
+public func calcRangePercent(min:CGFloat, max:CGFloat, percentage:CGFloat, reverse:Bool = false) -> CGFloat {
+    let tmpPercentage = CGFloat.minimum(abs(percentage), 1.0)
+    return reverse ?  ((max - min) * tmpPercentage) + min :  ((min - max) * tmpPercentage) + max
+}
+
+public extension CGFloat {
     var half: CGFloat {
         return self / 2
     }
