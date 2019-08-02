@@ -16,6 +16,15 @@ extension CGSize {
     }
 }
 
+public extension UICollectionViewFlowLayout {
+    convenience init(minimumLineSpacing: CGFloat = 10, scrollDirection:UICollectionView.ScrollDirection = .horizontal , itemSize:CGSize = .init(width: 20, height: 20)) {
+        self.init()
+        self.minimumLineSpacing = minimumLineSpacing
+        self.scrollDirection = scrollDirection
+        self.itemSize = itemSize
+    }
+}
+
 open class EKLayoutFlow: UICollectionViewFlowLayout {
     /// The configurator that would actually handle the transitions.
     open var configurator: LayoutAttributesConfigurator?
@@ -27,7 +36,6 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
     override open func prepare() {
         super.prepare()
         assert(collectionView.numberOfSections == 1, "Multi section aren't supported!")
-        
         guard cachedItemsAttributes.isEmpty || cachedItemsAttributes.count != collectionView.numberOfItems(inSection: 0) else { return }
         configurator?.prepare?(layout: self)
         cachedItemsAttributes = configurator?.prepareCache?(flow: self) ?? self.prepareCache()
