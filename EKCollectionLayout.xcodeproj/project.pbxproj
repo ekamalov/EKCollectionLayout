@@ -42,6 +42,7 @@
 		45455EC822F358AC002C6C7B /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455EC322F358AC002C6C7B /* PersonCell.swift */; };
 		45455EC922F358AC002C6C7B /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455EC422F358AC002C6C7B /* GenreCell.swift */; };
 		45455ECA22F358AC002C6C7B /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455EC522F358AC002C6C7B /* CarouselCell.swift */; };
+		45455ECC22F3FEF3002C6C7B /* GenresSubCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45455ECB22F3FEF3002C6C7B /* GenresSubCells.swift */; };
 		45E8458F22F1CD92004342D3 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8458E22F1CD92004342D3 /* APIService.swift */; };
 		45E8459122F1CDD1004342D3 /* HitFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E8459022F1CDD1004342D3 /* HitFeed.swift */; };
 		45E8459822F1D792004342D3 /* Gilroy-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45E8459622F1D792004342D3 /* Gilroy-SemiBold.ttf */; };
@@ -83,6 +84,7 @@
 		45455EC322F358AC002C6C7B /* PersonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonCell.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Views/PersonCell.swift"; sourceTree = "<group>"; };
 		45455EC422F358AC002C6C7B /* GenreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenreCell.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Views/GenreCell.swift"; sourceTree = "<group>"; };
 		45455EC522F358AC002C6C7B /* CarouselCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarouselCell.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Views/CarouselCell.swift"; sourceTree = "<group>"; };
+		45455ECB22F3FEF3002C6C7B /* GenresSubCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GenresSubCells.swift; path = "../../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Views/SubCells/GenresSubCells.swift"; sourceTree = "<group>"; };
 		45E8458E22F1CD92004342D3 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIService.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Service/APIService.swift"; sourceTree = "<group>"; };
 		45E8459022F1CDD1004342D3 /* HitFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HitFeed.swift; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Models/HitFeed.swift"; sourceTree = "<group>"; };
 		45E8459622F1D792004342D3 /* Gilroy-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				45455EBB22F34B6E002C6C7B /* CarouselCellSub.swift */,
 				45455EBD22F34B9A002C6C7B /* HitFeedSubCell.swift */,
 				45455EBF22F34EC6002C6C7B /* PersonSubCell.swift */,
+				45455ECB22F3FEF3002C6C7B /* GenresSubCells.swift */,
 			);
 			path = SubCells;
 			sourceTree = "<group>";
@@ -254,10 +257,10 @@
 		45E8459B22F1D82F004342D3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				45455EC222F358AC002C6C7B /* MainHeaderCell.swift */,
 				45455EC522F358AC002C6C7B /* CarouselCell.swift */,
 				45455EC422F358AC002C6C7B /* GenreCell.swift */,
 				45455EC122F358AC002C6C7B /* HitFeedCell.swift */,
-				45455EC222F358AC002C6C7B /* MainHeaderCell.swift */,
 				45455EC322F358AC002C6C7B /* PersonCell.swift */,
 				45455EBA22F34B60002C6C7B /* SubCells */,
 			);
@@ -446,6 +449,7 @@
 				45455EC622F358AC002C6C7B /* HitFeedCell.swift in Sources */,
 				45455EA622F1F82D002C6C7B /* Extensions.swift in Sources */,
 				45455EBC22F34B6E002C6C7B /* CarouselCellSub.swift in Sources */,
+				45455ECC22F3FEF3002C6C7B /* GenresSubCells.swift in Sources */,
 				45455EA422F1F7B2002C6C7B /* EKAppStoreLayout.swift in Sources */,
 				45455EC822F358AC002C6C7B /* PersonCell.swift in Sources */,
 				45455EC722F358AC002C6C7B /* MainHeaderCell.swift in Sources */,
