@@ -41,6 +41,7 @@ extension CarouselLayout: LayoutAttributesConfigurator {
     public func targetContentOffset(flow: EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint {
         let itemIndex = round(proposedContentOffset.x / scaleItemSize.width)
         delegate?.centeredItem(at: Int(itemIndex))
+        print(itemIndex, velocity)
         let xOffset = itemIndex * scaleItemSize.width
         return CGPoint(x: xOffset, y: 0)
     }

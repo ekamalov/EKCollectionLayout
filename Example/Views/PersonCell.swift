@@ -14,7 +14,7 @@ class PersonCell: MainCell {
     var items:Persons = []
     
     lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout(minimumLineSpacing: 20, scrollDirection: .horizontal, itemSize: .init(width: mainScreen.width * 0.4, height: mainScreen.height * 0.277))
+        let layout = UICollectionViewFlowLayout(minimumLineSpacing: 20, scrollDirection: .horizontal)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.showsHorizontalScrollIndicator = false
         cv.contentInset = UIEdgeInsets.init(top: 0, left: 20, bottom: 0, right: 20)
@@ -34,19 +34,22 @@ class PersonCell: MainCell {
             }
         }
         contentView.addSubviews(title,seeAll,seperatorView, collectionView)
-    }
-    override func layoutSubviews() {
+        
         seperatorView.layout { $0.left.right.margin(20).top(0).height(1) }
         title.layout { $0.left(20).top(20).right(80).height(28) }
         seeAll.layout { $0.centerY(of: title).left(of: title, aligned: .right).right(20).height(20) }
         collectionView.layout { $0.top(of: title, 15, aligned: .bottom).left.right.margin(0).bottom(55) }
     }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
-extension PersonCell: UICollectionViewDelegate,UICollectionViewDataSource {
+extension PersonCell: UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return .init(width: mainScreen.width * 0.4, height: self.bounds.height * 0.65)
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }

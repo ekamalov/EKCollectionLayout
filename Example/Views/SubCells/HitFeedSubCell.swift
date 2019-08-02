@@ -20,19 +20,20 @@ class HitFeedSubCell: UICollectionViewCell {
     }
     
     lazy var image:UIImageView = UIImageView(frame: .zero)
+    // Her you can use button
+    lazy var addIconView = UIImageView(image: UIImage(named: "add"))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .red
-        contentView.addSubviews(title,subTitle,image)
+        
+        contentView.addSubviews(title,subTitle,image,addIconView)
+        
+        image.layout { $0.left(0).centerY().size(60) }
+        title.layout { $0.left(of: image,15 , aligned: .right).top(6).right(35) }
+        subTitle.layout { $0.top(of: title, 2, aligned: .bottom).right(35).left(of: title) }
+        addIconView.layout { $0.size(32).right(of: self).centerY() }
     }
-    
-    override func layoutSubviews() {
-//        image.layout { $0.left(20).centerY().size(60) }
-//        title.layout { $0.left(of: image,15 , aligned: .right).top(20).right(10) }
-//        subTitle.layout { $0.top(of: title, 4, aligned: .bottom).right(20).left(of: title) }
-    }
-    
+   
     func setData(item: HitFeed){
         self.image.image = UIImage(named: item.preview)
         self.title.text = item.title

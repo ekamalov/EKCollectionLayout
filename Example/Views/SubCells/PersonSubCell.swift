@@ -14,21 +14,19 @@ class PersonSubCell: UICollectionViewCell {
         $0.font = Fonts.GilroyBold.withSize(25)
     }
     lazy var personPhoto:UIImageView = UIImageView(frame: .zero)
-    
+    lazy var gradientLayer = GradientView(gradient: .first)
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setGradient(gradient: .first)
-        
         self.layer.cornerRadius = 30
         self.clipsToBounds = true
-        contentView.addSubviews(personPhoto, personName)
-    }
-    
-    override func layoutSubviews() {
+        contentView.addSubviews(gradientLayer,personPhoto, personName)
+        
+        gradientLayer.layout { $0.all(0)}
         personPhoto.layout { $0.all(0) }
         personName.layout { $0.left(15).top(20).height(30).right(20) }
     }
-    
+
     func setData(item: Person){
         self.personPhoto.image = UIImage(named: item.photo)
         self.personName.text = item.name

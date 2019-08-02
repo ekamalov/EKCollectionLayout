@@ -39,6 +39,7 @@ class MainViewController: UIViewController {
 
         view.addSubview(collectionView)
     }
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
 }
 
 extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -56,7 +57,7 @@ extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch items[indexPath.row] {
         case .carousel: return .init(width: mainScreen.width, height: 290)
-        case .genres: return .init(width: mainScreen.width, height: 301)
+        case .genres: return .init(width: mainScreen.width, height: 351)
         case .hits: return .init(width: mainScreen.width, height: 299)
         case .persons: return .init(width: mainScreen.width, height: 346)
         }

@@ -8,6 +8,7 @@
 
 import UIKit
 import EKLayout
+
 class MainCell: UICollectionViewCell {
     lazy var title:UILabel = .build {
         $0.textColor = Colors.lightText.value
@@ -25,14 +26,13 @@ class MainCell: UICollectionViewCell {
     }
 }
 
-
 class CarouselCell: UICollectionViewCell {
     
     var items: CarouselItems = []
     
     lazy var carousel: UICollectionView = {
-        let layout = EKLayoutFlow(minimumLineSpacing: 15, scrollDirection: .horizontal, itemSize: .init(width: mainScreen.width * 0.867, height: mainScreen.height * 0.277))
-        layout.configurator = CarouselLayout(scaleItemSize: .init(width: mainScreen.width * 0.867, height: mainScreen.height * 0.246))
+        let layout = EKLayoutFlow(minimumLineSpacing: 15, scrollDirection: .horizontal, itemSize: .init(width: mainScreen.width * 0.867, height: self.bounds.height * 0.775))
+        layout.configurator = CarouselLayout(scaleItemSize: .init(width: mainScreen.width * 0.867, height: self.bounds.height * 0.689))
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.showsHorizontalScrollIndicator = false
         cv.register(CarouselCellSub.self, forCellWithReuseIdentifier: CarouselCellSub.reuseIdentifier)
@@ -50,8 +50,7 @@ class CarouselCell: UICollectionViewCell {
             }
         }
         contentView.addSubviews(carousel)
-    }
-    override func layoutSubviews() {
+        
         carousel.layout { $0.all(0) }
     }
     required init?(coder aDecoder: NSCoder) {

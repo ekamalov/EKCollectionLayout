@@ -18,6 +18,7 @@ class HitFeedCell: MainCell {
         layout.configurator = EKAppStoreLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.showsHorizontalScrollIndicator = false
+        cv.contentInset = .init(top: 0, left: 20, bottom: 0, right: 20)
         cv.register(HitFeedSubCell.self, forCellWithReuseIdentifier: HitFeedSubCell.reuseIdentifier)
         cv.dataSource = self
         cv.delegate = self
@@ -33,16 +34,15 @@ class HitFeedCell: MainCell {
             case .failure(let error): print(error)
             }
         }
+        
         contentView.addSubviews(title,seeAll,seperatorView, appStoreCollectionView)
-    }
-    
-    override func layoutSubviews() {
+        
         seperatorView.layout { $0.left.right.margin(20).top(0).height(1) }
-        title.layout { $0.left(20).top(20).right(80) }
+        title.layout { $0.left(20).top(20).right(80).height(30) }
         seeAll.layout { $0.centerY(of: title).right(20) }
         appStoreCollectionView.layout { $0.top(of: title, 15, aligned: .bottom).left.right.margin(0).bottom(25) }
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
