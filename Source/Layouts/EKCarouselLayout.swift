@@ -7,6 +7,9 @@
 //
 
 import UIKit
+public protocol CarouselLayoutProgressor {
+    func centeredItem(at index: Int)
+}
 
 public class CarouselLayout {
     /// The alpha to apply on the cells that are away from the center. Should be
@@ -14,6 +17,7 @@ public class CarouselLayout {
     public var minAlpha: CGFloat
     /// The scaled item size
     public var scaleItemSize:CGSize
+    public var delegate:CarouselLayoutProgressor?
     
     public init(minAlpha: CGFloat = 0.5, scaleItemSize:CGSize) {
         self.minAlpha = minAlpha
@@ -36,6 +40,7 @@ extension CarouselLayout: LayoutAttributesConfigurator {
     
     public func targetContentOffset(flow: EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint {
         let itemIndex = round(proposedContentOffset.x / scaleItemSize.width)
+        delegate?.centeredItem(at: Int(itemIndex))
         let xOffset = itemIndex * scaleItemSize.width
         return CGPoint(x: xOffset, y: 0)
     }

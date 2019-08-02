@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc public  protocol LayoutAttributesConfigurator{
+@objc public protocol LayoutAttributesConfigurator{
     @objc optional func collectionViewContentSize(flow:EKLayoutFlow) -> CGSize
     @objc optional func prepare(layout flow:EKLayoutFlow)
     @objc optional func prepareCache(flow:EKLayoutFlow) -> [IndexPath: CustomAttributes]
@@ -16,5 +16,3 @@ import UIKit
     @objc optional func transformCustomCalc(flow:EKLayoutFlow, attributes: CustomAttributes)
     @objc optional func targetContentOffset(flow:EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint
 }
-
-
