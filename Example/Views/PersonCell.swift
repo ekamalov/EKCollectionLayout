@@ -14,10 +14,7 @@ class PersonCell: MainCell {
     var items:Persons = []
     
     lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 20
-        layout.itemSize = .init(width: mainScreen.width * 0.4, height: mainScreen.height * 0.277)
+        let layout = UICollectionViewFlowLayout(minimumLineSpacing: 20, scrollDirection: .horizontal, itemSize: .init(width: mainScreen.width * 0.4, height: mainScreen.height * 0.277))
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.showsHorizontalScrollIndicator = false
         cv.contentInset = UIEdgeInsets.init(top: 0, left: 20, bottom: 0, right: 20)

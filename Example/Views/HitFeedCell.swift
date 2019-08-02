@@ -14,10 +14,8 @@ class HitFeedCell: MainCell {
     var items: HitFeeds = []
     
     lazy var appStoreCollectionView: UICollectionView = {
-        let layout = EKLayoutFlow()
+        let layout = EKLayoutFlow(minimumLineSpacing: 15, scrollDirection: .horizontal, itemSize: CGSize(width: mainScreen.width-40, height: 60))
         layout.configurator = EKAppStoreLayout()
-        layout.itemSize = CGSize(width: mainScreen.width-40, height: 60)
-        layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.showsHorizontalScrollIndicator = false
         cv.register(HitFeedSubCell.self, forCellWithReuseIdentifier: HitFeedSubCell.reuseIdentifier)

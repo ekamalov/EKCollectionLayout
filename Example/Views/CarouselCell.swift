@@ -31,11 +31,8 @@ class CarouselCell: UICollectionViewCell {
     var items: CarouselItems = []
     
     lazy var carousel: UICollectionView = {
-        let layout = EKLayoutFlow()
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 15
+        let layout = EKLayoutFlow(minimumLineSpacing: 15, scrollDirection: .horizontal, itemSize: .init(width: mainScreen.width * 0.867, height: mainScreen.height * 0.277))
         layout.configurator = CarouselLayout(scaleItemSize: .init(width: mainScreen.width * 0.867, height: mainScreen.height * 0.246))
-        layout.itemSize = .init(width: mainScreen.width * 0.867, height: mainScreen.height * 0.277)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.showsHorizontalScrollIndicator = false
         cv.register(CarouselCellSub.self, forCellWithReuseIdentifier: CarouselCellSub.reuseIdentifier)

@@ -12,9 +12,9 @@ typealias Genres = [Genre]
 
 struct Genre: Codable {
     let preview, name: String
-    let items: [Item]
+    let items: [GenreItem]
 }
 
-struct Item: Codable {
+struct GenreItem: Codable {
     let preview: String
 }
