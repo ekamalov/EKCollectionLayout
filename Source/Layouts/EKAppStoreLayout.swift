@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class EKAppStoreLayout:LayoutAttributesConfigurator {
+public class EKAppStoreLayout: EKLayoutAttributesConfigurator {
     
     public func prepare(layout flow: EKLayoutFlow) {
         assert(flow.scrollDirection == .horizontal, "Horizontal scroll direction aren't supported!")
@@ -33,7 +33,6 @@ public class EKAppStoreLayout:LayoutAttributesConfigurator {
             let pageWidth = flow.itemSize.width + flow.minimumLineSpacing
             newOffsetX += velocity.x > 0 ? pageWidth : -pageWidth
         }
-
         return CGPoint(x: newOffsetX, y: 0)
     }
     

@@ -12,7 +12,7 @@ import EKLayout
 class MainCell: UICollectionViewCell {
     lazy var title:UILabel = .build {
         $0.textColor = Colors.lightText.value
-        $0.font = Fonts.GilroyBold.withSize(23)
+        $0.font = Fonts.GilroyBold.withSize(25)
     }
     // Her you can use button
     lazy var seeAll:UILabel = .build {
@@ -32,6 +32,7 @@ class CarouselCell: UICollectionViewCell {
     
     lazy var carousel: UICollectionView = {
         let layout = EKLayoutFlow(minimumLineSpacing: 15, scrollDirection: .horizontal, itemSize: .init(width: mainScreen.width * 0.867, height: self.bounds.height * 0.775))
+        layout.progressor = self
         layout.configurator = CarouselLayout(scaleItemSize: .init(width: mainScreen.width * 0.867, height: self.bounds.height * 0.689))
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.showsHorizontalScrollIndicator = false
@@ -59,7 +60,7 @@ class CarouselCell: UICollectionViewCell {
 }
 
 
-extension CarouselCell: UICollectionViewDelegate,UICollectionViewDataSource {
+extension CarouselCell: UICollectionViewDelegate,UICollectionViewDataSource, EKLayoutFlowProgressor {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
@@ -68,5 +69,7 @@ extension CarouselCell: UICollectionViewDelegate,UICollectionViewDataSource {
         cell.setData(item: items[indexPath.row])
         return cell
     }
-    
+    func scrollingFinish() {
+        Haptic.impact(style: .light).impact()
+    }
 }

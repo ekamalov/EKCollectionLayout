@@ -12,12 +12,8 @@
 		450AAD0D22B646D100D50833 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD0C22B646D100D50833 /* MainViewController.swift */; };
 		450AAD1222B646D300D50833 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 450AAD1122B646D300D50833 /* Assets.xcassets */; };
 		450AAD1522B646D300D50833 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 450AAD1322B646D300D50833 /* LaunchScreen.storyboard */; };
-		450AAD1C22B6487D00D50833 /* LayoutAttributesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD1B22B6487D00D50833 /* LayoutAttributesConfigurator.swift */; };
-		450AAD1D22B6487D00D50833 /* LayoutAttributesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD1B22B6487D00D50833 /* LayoutAttributesConfigurator.swift */; };
 		450AAD2022B648ED00D50833 /* EKLayoutFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD1F22B648ED00D50833 /* EKLayoutFlow.swift */; };
 		450AAD2122B648ED00D50833 /* EKLayoutFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD1F22B648ED00D50833 /* EKLayoutFlow.swift */; };
-		450AAD2322B6491D00D50833 /* CustomAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD2222B6491D00D50833 /* CustomAttributes.swift */; };
-		450AAD2422B6491D00D50833 /* CustomAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD2222B6491D00D50833 /* CustomAttributes.swift */; };
 		450AAD2922B65A8800D50833 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD0C22B646D100D50833 /* MainViewController.swift */; };
 		450AAD2B22B78CDA00D50833 /* EKCarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD2A22B78CDA00D50833 /* EKCarouselLayout.swift */; };
 		450AAD2C22B78CDA00D50833 /* EKCarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD2A22B78CDA00D50833 /* EKCarouselLayout.swift */; };
@@ -60,9 +56,7 @@
 		450AAD1122B646D300D50833 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		450AAD1422B646D300D50833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		450AAD1622B646D300D50833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		450AAD1B22B6487D00D50833 /* LayoutAttributesConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutAttributesConfigurator.swift; sourceTree = "<group>"; };
 		450AAD1F22B648ED00D50833 /* EKLayoutFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKLayoutFlow.swift; sourceTree = "<group>"; };
-		450AAD2222B6491D00D50833 /* CustomAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAttributes.swift; sourceTree = "<group>"; };
 		450AAD2A22B78CDA00D50833 /* EKCarouselLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKCarouselLayout.swift; sourceTree = "<group>"; };
 		45455E7722F1D8C2002C6C7B /* HitFeed.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = HitFeed.json; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Resources/HitFeed.json"; sourceTree = "<group>"; };
 		45455E7B22F1E1CC002C6C7B /* Genres.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Genres.json; path = "../../../../../../System/Volumes/Data/Users/ek/Temporary Docs/EKCollectionLayout/Example/Resources/Genres.json"; sourceTree = "<group>"; };
@@ -138,7 +132,6 @@
 			children = (
 				450AAD2822B64B2F00D50833 /* Layouts */,
 				450AAD1E22B648E900D50833 /* Core */,
-				450AAD1A22B6484300D50833 /* Protocols */,
 				450AACFC22B645E200D50833 /* EKCollectionLayout.h */,
 				450AACFD22B645E200D50833 /* Info.plist */,
 			);
@@ -160,19 +153,10 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
-		450AAD1A22B6484300D50833 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				450AAD1B22B6487D00D50833 /* LayoutAttributesConfigurator.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		450AAD1E22B648E900D50833 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				450AAD1F22B648ED00D50833 /* EKLayoutFlow.swift */,
-				450AAD2222B6491D00D50833 /* CustomAttributes.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -425,8 +409,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				450AAD2922B65A8800D50833 /* MainViewController.swift in Sources */,
-				450AAD1C22B6487D00D50833 /* LayoutAttributesConfigurator.swift in Sources */,
-				450AAD2322B6491D00D50833 /* CustomAttributes.swift in Sources */,
 				450AAD2022B648ED00D50833 /* EKLayoutFlow.swift in Sources */,
 				450AAD2B22B78CDA00D50833 /* EKCarouselLayout.swift in Sources */,
 			);
@@ -438,12 +420,10 @@
 			files = (
 				450AAD0D22B646D100D50833 /* MainViewController.swift in Sources */,
 				450AAD2122B648ED00D50833 /* EKLayoutFlow.swift in Sources */,
-				450AAD1D22B6487D00D50833 /* LayoutAttributesConfigurator.swift in Sources */,
 				45455E8A22F1F14E002C6C7B /* AppAppearance.swift in Sources */,
 				45455EBE22F34B9A002C6C7B /* HitFeedSubCell.swift in Sources */,
 				45455E8422F1E457002C6C7B /* Carousel.swift in Sources */,
 				45455E8622F1E463002C6C7B /* Genres.swift in Sources */,
-				450AAD2422B6491D00D50833 /* CustomAttributes.swift in Sources */,
 				45455E8822F1E470002C6C7B /* Persons.swift in Sources */,
 				45455EC022F34EC6002C6C7B /* PersonSubCell.swift in Sources */,
 				45455ECA22F358AC002C6C7B /* CarouselCell.swift in Sources */,

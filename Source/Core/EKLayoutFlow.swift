@@ -8,28 +8,26 @@
 
 import UIKit
 
-extension CGSize {
-    func scale(other: CGSize)-> CGPoint {
-        let x = self.width / other.width
-        let y = self.height / other.height
-        return .init(x: x, y: y)
-    }
+@objc public protocol EKLayoutAttributesConfigurator{
+    @objc optional func collectionViewContentSize(flow:EKLayoutFlow) -> CGSize
+    @objc optional func prepare(layout flow:EKLayoutFlow)
+    @objc optional func prepareCache(flow:EKLayoutFlow) -> [IndexPath: UICollectionViewLayoutAttributes]
+    @objc optional func transform(flow:EKLayoutFlow, attributes: UICollectionViewLayoutAttributes)
+    @objc optional func targetContentOffset(flow:EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint
 }
 
-public extension UICollectionViewFlowLayout {
-    convenience init(minimumLineSpacing: CGFloat = 10, scrollDirection:UICollectionView.ScrollDirection = .horizontal , itemSize:CGSize = .init(width: 20, height: 20)) {
-        self.init()
-        self.minimumLineSpacing = minimumLineSpacing
-        self.scrollDirection = scrollDirection
-        self.itemSize = itemSize
-    }
+@objc public protocol EKLayoutFlowProgressor {
+   @objc optional func actuallyItem(at index: Int)
+   @objc optional func scrollingFinish()
 }
 
 open class EKLayoutFlow: UICollectionViewFlowLayout {
     /// The configurator that would actually handle the transitions.
-    open var configurator: LayoutAttributesConfigurator?
+    open var configurator: EKLayoutAttributesConfigurator?
     
-    internal var cachedItemsAttributes: [IndexPath: CustomAttributes] = [:]
+    open var progressor:EKLayoutFlowProgressor?
+    
+    internal var cachedItemsAttributes: [IndexPath: UICollectionViewLayoutAttributes] = [:]
     
     override open var collectionView: UICollectionView { return super.collectionView! }
     
@@ -41,8 +39,8 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
         cachedItemsAttributes = configurator?.prepareCache?(flow: self) ?? self.prepareCache()
     }
   
-    private func prepareCache() -> [IndexPath: CustomAttributes] {
-        var cache: [IndexPath: CustomAttributes] = [:]
+    private func prepareCache() -> [IndexPath: UICollectionViewLayoutAttributes] {
+        var cache: [IndexPath: UICollectionViewLayoutAttributes] = [:]
         for item in 0..<collectionView.numberOfItems(inSection: 0) {
             let indexPath = IndexPath(item: item, section: 0)
             cache[indexPath] = createAttributesForItem(at: indexPath)
@@ -50,8 +48,8 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
         return cache
     }
     
-    internal func createAttributesForItem(at indexPath: IndexPath) -> CustomAttributes? {
-        let attributes = CustomAttributes(forCellWith: indexPath)
+    internal func createAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
         attributes.frame = super.initialLayoutAttributesForAppearingItem(at: indexPath)?.frame ?? .zero
         return attributes
     }
@@ -61,12 +59,16 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
     }
     
     open override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+        progressor?.scrollingFinish?()
         return configurator?.targetContentOffset?(flow: self, proposedContentOffset: proposedContentOffset, velocity: velocity) ?? super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity)
     }
     
     // MARK: - Invalidate layout
     override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        if newBounds.size != collectionView.bounds.size { cachedItemsAttributes.removeAll() }
+        if newBounds.size != collectionView.bounds.size {
+            cachedItemsAttributes.removeAll()
+            return false
+        }
         return true
     }
     
@@ -81,28 +83,21 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
         return attributes
     }
     
-    /// Overrided so that we can store extra information in the layout attributes.
-    open override class var layoutAttributesClass: AnyClass { return CustomAttributes.self }
-    
     override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var attributes = cachedItemsAttributes.map { $0.value }.filter { $0.frame.intersects(rect) }.sorted(by: { $0.indexPath.row < $1.indexPath.row })
-        attributes = attributes.compactMap { $0.copy() as? CustomAttributes }.map { attr in
-            if configurator?.transform != nil {
-                configurator?.transform?(flow: self, attributes: attr)
-            }else if configurator?.transformCustomCalc != nil{
-                let distance: CGFloat = collectionView.frame.width
-                let itemOffset: CGFloat = attr.center.x - collectionView.contentOffset.x
-                attr.startOffset = (attr.frame.origin.x - collectionView.contentOffset.x) / attr.bounds.width
-                attr.endOffset = (attr.frame.origin.x - collectionView.contentOffset.x - collectionView.frame.width) / attr.bounds.width
-                attr.middleOffset = itemOffset / distance - 0.5
-                // Cache the contentView since we're going to use it a lot.
-                if attr.contentView == nil, let c = collectionView.cellForItem(at: attr.indexPath)?.contentView {
-                    attr.contentView = c
-                }
-                configurator?.transformCustomCalc?(flow: self, attributes: attr)
-            }
+        attributes = attributes.compactMap { $0.copy() as? UICollectionViewLayoutAttributes }.map { attr in
+           configurator?.transform?(flow: self, attributes: attr)
             return attr
         }
         return attributes
+    }
+}
+
+public extension UICollectionViewFlowLayout {
+    convenience init(minimumLineSpacing: CGFloat = 10, scrollDirection:UICollectionView.ScrollDirection = .horizontal , itemSize:CGSize = .init(width: 20, height: 20)) {
+        self.init()
+        self.minimumLineSpacing = minimumLineSpacing
+        self.scrollDirection = scrollDirection
+        self.itemSize = itemSize
     }
 }

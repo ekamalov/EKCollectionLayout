@@ -16,9 +16,8 @@ class GenreCell: MainCell {
     
     lazy var carouselCV: UICollectionView = {
         let layout = EKLayoutFlow(minimumLineSpacing: 15, scrollDirection: .horizontal, itemSize: .init(width: 120, height: 120))
-        let carouselLayout = CarouselLayout(scaleItemSize: .init(width: 80, height: 80))
-        carouselLayout.delegate = self
-        layout.configurator = carouselLayout
+        layout.progressor = self
+        layout.configurator = CarouselLayout(scaleItemSize: .init(width: 80, height: 80))
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.showsHorizontalScrollIndicator = false
         cv.register(GenresCarouselCell.self, forCellWithReuseIdentifier: GenresCarouselCell.reuseIdentifier)
@@ -44,6 +43,8 @@ class GenreCell: MainCell {
         $0.textAlignment = .center
     }
     
+    private var hapticIsEnable = false
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         title.text = "Genres"
@@ -53,7 +54,7 @@ class GenreCell: MainCell {
                 DispatchQueue.main.async {
                     self.items = data
                     self.carouselCV.reloadData()
-                    self.centeredItem(at: 0)
+                    self.actuallyItem(at: 0)
                 }
             case .failure(let error): print(error)
             }
@@ -67,7 +68,7 @@ class GenreCell: MainCell {
         genreTitle.layout { $0.top(of: carouselCV, 10, aligned: .bottom).centerX().height(30).width(80%) }
         carouselSubCV.layout { $0.top(of: genreTitle, 0, aligned: .bottom).left.right.bottom.margin(0) }
     }
-   
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -88,11 +89,23 @@ extension GenreCell: UICollectionViewDelegate,UICollectionViewDataSource {
         cell.setData(item: items[indexPath.row])
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if hapticIsEnable && collectionView == carouselSubCV {
+            Haptic.selection.impact()
+        }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        hapticIsEnable = true
+    }
 }
 
 
-extension GenreCell: CarouselLayoutProgressor {
-    func centeredItem(at index: Int) {
+extension GenreCell: EKLayoutFlowProgressor {
+    func scrollingFinish() {
+        Haptic.impact(style: .medium).impact()
+    }
+    func actuallyItem(at index: Int) {
         guard let item = items[safety: index] else { return }
         self.genreItems = item.items
         self.genreTitle.text = item.name

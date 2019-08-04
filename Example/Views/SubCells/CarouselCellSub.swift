@@ -16,7 +16,7 @@ class CarouselCellSub: UICollectionViewCell {
     
     lazy var title:UILabel = .build {
         $0.textColor = Colors.lightText.value
-        $0.font = Fonts.GilroyBold.withSize(23)
+        $0.font = Fonts.GilroyBold.withSize(30)
     }
     
     lazy var subTitle:UILabel = .build {
@@ -37,7 +37,6 @@ class CarouselCellSub: UICollectionViewCell {
         preview.layout { $0.right(of: self).top.bottom.margin(0).width(225) }
         subTitle.layout { $0.left(of: title).top(of: title, 4, aligned: .bottom) }
         appleIcon.layout { $0.left(of: title).bottom(30).size(width: 19.7%, height: 10.66%) }
-        
     }
     func setData(item: CarouselItem){
         preview.image = UIImage(named: item.preview)

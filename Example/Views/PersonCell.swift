@@ -23,6 +23,7 @@ class PersonCell: MainCell {
         cv.delegate = self
         return cv
     }()
+    private var hapticIsEnable = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,7 +47,7 @@ class PersonCell: MainCell {
     }
 }
 
-extension PersonCell: UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension PersonCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: mainScreen.width * 0.4, height: self.bounds.height * 0.65)
     }
@@ -57,6 +58,15 @@ extension PersonCell: UICollectionViewDelegate,UICollectionViewDataSource, UICol
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonSubCell.reuseIdentifier, for: indexPath) as! PersonSubCell
         cell.setData(item: items[indexPath.row])
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if hapticIsEnable {
+            Haptic.selection.impact()
+        }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+         hapticIsEnable = true
     }
 }
 

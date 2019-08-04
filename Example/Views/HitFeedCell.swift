@@ -15,6 +15,7 @@ class HitFeedCell: MainCell {
     
     lazy var appStoreCollectionView: UICollectionView = {
         let layout = EKLayoutFlow(minimumLineSpacing: 15, scrollDirection: .horizontal, itemSize: CGSize(width: mainScreen.width-40, height: 60))
+        layout.progressor = self
         layout.configurator = EKAppStoreLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.showsHorizontalScrollIndicator = false
@@ -48,7 +49,7 @@ class HitFeedCell: MainCell {
     }
 }
 
-extension HitFeedCell: UICollectionViewDelegate,UICollectionViewDataSource {
+extension HitFeedCell: UICollectionViewDelegate,UICollectionViewDataSource, EKLayoutFlowProgressor {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
@@ -56,6 +57,9 @@ extension HitFeedCell: UICollectionViewDelegate,UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HitFeedSubCell.reuseIdentifier, for: indexPath) as! HitFeedSubCell
         cell.setData(item: items[indexPath.row])
         return cell
+    }
+    func scrollingFinish() {
+        Haptic.impact(style: .light).impact()
     }
 }
 

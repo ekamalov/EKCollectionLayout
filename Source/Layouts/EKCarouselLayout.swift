@@ -7,9 +7,7 @@
 //
 
 import UIKit
-public protocol CarouselLayoutProgressor {
-    func centeredItem(at index: Int)
-}
+
 
 public class CarouselLayout {
     /// The alpha to apply on the cells that are away from the center. Should be
@@ -17,7 +15,6 @@ public class CarouselLayout {
     public var minAlpha: CGFloat
     /// The scaled item size
     public var scaleItemSize:CGSize
-    public var delegate:CarouselLayoutProgressor?
     
     public init(minAlpha: CGFloat = 0.5, scaleItemSize:CGSize) {
         self.minAlpha = minAlpha
@@ -25,7 +22,7 @@ public class CarouselLayout {
     }
 }
 
-extension CarouselLayout: LayoutAttributesConfigurator {
+extension CarouselLayout: EKLayoutAttributesConfigurator {
     public func prepare(layout flow: EKLayoutFlow) {
         assert(flow.scrollDirection == .horizontal, "Horizontal scroll direction aren't supported!")
         if flow.collectionView.decelerationRate != .fast  { flow.collectionView.decelerationRate = .fast }
@@ -51,7 +48,7 @@ extension CarouselLayout: LayoutAttributesConfigurator {
             itemIndex = offsetAdjustment.rounded()
         }
         
-        delegate?.centeredItem(at: Int(itemIndex))
+        flow.progressor?.actuallyItem?(at: Int(itemIndex))
         let xOffset = itemIndex * scaleItemSize.width
         return CGPoint(x: xOffset, y: 0)
     }
@@ -96,11 +93,6 @@ public func calcRangePercent(min:CGFloat, max:CGFloat, percentage:CGFloat, rever
 }
 
 public extension CGFloat {
-    var half: CGFloat {
-        return self / 2
-    }
+    var half: CGFloat { return self / 2 }
 }
 
-public extension FloatingPoint {
-    var fraction: Self { return modf(self).1 }
-}

@@ -12,7 +12,6 @@ import EKLayout
 class GenresCarouselCell: UICollectionViewCell {
     
     lazy var gradientLayer = GradientView(gradient: .first)
-
     lazy var photo:UIImageView = UIImageView(frame: .zero)
     
     override init(frame: CGRect) {

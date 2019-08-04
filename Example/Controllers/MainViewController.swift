@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import EKLayout
 
 var mainScreen = UIScreen.main.bounds
 
@@ -22,7 +22,7 @@ class MainViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.headerReferenceSize = CGSize.init(width: mainScreen.width, height: 100)
         layout.minimumLineSpacing = 0
-        let cv = UICollectionView(frame: mainScreen, collectionViewLayout: layout)
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = Colors.darkBackground.value
         cv.register(MainHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: MainHeaderCell.identifier)
         cv.dataSource = self
@@ -38,6 +38,7 @@ class MainViewController: UIViewController {
         collectionView.register(PersonCell.self, forCellWithReuseIdentifier: PersonCell.reuseIdentifier)
 
         view.addSubview(collectionView)
+        collectionView.layout { $0.top(36).left.right.bottom.margin(0) }
     }
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
 }
@@ -72,107 +73,3 @@ extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSourc
         fatalError()
     }
 }
-
-//class MainViewController: UIViewController {
-//
-//    lazy var collectionViewA: UICollectionView = {
-//        let layout = EKLayoutFlow()
-//        layout.scrollDirection = .horizontal
-//        layout.minimumLineSpacing = 20
-//        layout.configurator = CarouselLayout(scaleItemSize: .init(width: 80,height: 80))
-//        layout.itemSize = .init(width: 120, height: 120)
-//        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//        cv.backgroundColor = .white
-//        cv.showsHorizontalScrollIndicator = false
-//        cv.register(CVCell.self, forCellWithReuseIdentifier: CVCell.identifier)
-//        cv.dataSource = self
-//        cv.delegate = self
-//        return cv
-//    }()
-//
-//    lazy var collectionView: UICollectionView = {
-//        let layout = EKLayoutFlow()
-//        layout.configurator = EKAppStoreLayout()
-//        layout.itemSize = CGSize(width: mainScreenWidth-40, height: 67)
-//        layout.scrollDirection = .horizontal
-//        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//        cv.backgroundColor = .white
-//        cv.showsHorizontalScrollIndicator = false
-//        cv.register(CVCell.self, forCellWithReuseIdentifier: CVCell.identifier)
-//        cv.dataSource = self
-//        cv.delegate = self
-//        return cv
-//    }()
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        self.view.backgroundColor = .white
-//
-//        self.view.addSubview(collectionViewA)
-//        self.view.addSubview(collectionView)
-//
-//
-//
-////        APIService.fetchHitFeeds { result in
-////            switch result{
-////            case .success(let items): print(items)
-////            case .failure(let error): print(error)
-////            }
-////        }
-//
-////        APIService.fetchGenres { result in
-////            switch result{
-////            case .success(let items): print(items)
-////            case .failure(let error): print(error)
-////            }
-////        }
-//
-//        APIService.fetchPersons { result in
-//            switch result{
-//            case .success(let items): print(items)
-//            case .failure(let error): print(error)
-//            }
-//        }
-//
-////        APIService.fetchCarousel { result in
-////            switch result{
-////            case .success(let items): print(items)
-////            case .failure(let error): print(error)
-////            }
-////        }
-//
-//
-//
-//    }
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        collectionViewA.frame = CGRect(x: 0, y:50, width: view.frame.width, height: 130)
-//        collectionView.frame = CGRect(x: 0, y: collectionViewA.frame.maxY + 50, width: view.frame.width, height: 250)
-//    }
-//}
-//
-//
-//extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return collectionView == self.collectionView ? 19 : 5
-//    }
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CVCell.identifier, for: indexPath)
-//        cell.backgroundColor = .red
-//        cell.layer.cornerRadius = 10
-//        return cell
-//    }
-//
-//}
-//
-//
-//class CVCell: UICollectionViewCell {
-//    static let identifier = "CVCell"
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//    }
-//}

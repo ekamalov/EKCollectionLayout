@@ -11,7 +11,7 @@ import UIKit
 class HitFeedSubCell: UICollectionViewCell {
     lazy var title:UILabel = .build {
         $0.textColor = Colors.lightText.value
-        $0.font = Fonts.GilroyBold.withSize(23)
+        $0.font = Fonts.GilroyBold.withSize(24)
     }
     
     lazy var subTitle:UILabel = .build {

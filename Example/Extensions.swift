@@ -46,3 +46,25 @@ extension Array {
         return self[index]
     }
 }
+
+
+enum Haptic {
+    case impact(style: UIImpactFeedbackGenerator.FeedbackStyle)
+    case notification(style: UINotificationFeedbackGenerator.FeedbackType)
+    case selection
+    
+    func impact(){
+        switch self {
+        case .impact(style: let style):
+            let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: style)
+            impactFeedbackgenerator.prepare()
+            impactFeedbackgenerator.impactOccurred()
+        case .notification(style: let style):
+            let notificationFeedbackGenerator = UINotificationFeedbackGenerator()
+            notificationFeedbackGenerator.notificationOccurred(style)
+        default:
+            let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+            selectionFeedbackGenerator.selectionChanged()
+        }
+    }
+}
