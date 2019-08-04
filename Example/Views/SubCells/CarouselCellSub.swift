@@ -34,7 +34,7 @@ class CarouselCellSub: UICollectionViewCell {
         
         gradientLayer.layout { $0.all(0) }
         title.layout { $0.top(30).left(20) }
-        preview.layout { $0.right(of: self).top.bottom.margin(0).width(180) }
+        preview.layout { $0.right(of: self).top.bottom.margin(0).width(225) }
         subTitle.layout { $0.left(of: title).top(of: title, 4, aligned: .bottom) }
         appleIcon.layout { $0.left(of: title).bottom(30).size(width: 19.7%, height: 10.66%) }
         

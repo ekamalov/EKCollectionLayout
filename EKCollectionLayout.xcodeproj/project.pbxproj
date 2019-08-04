@@ -54,7 +54,7 @@
 		450AACF922B645E200D50833 /* EKCollectionLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EKCollectionLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		450AACFC22B645E200D50833 /* EKCollectionLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EKCollectionLayout.h; sourceTree = "<group>"; };
 		450AACFD22B645E200D50833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		450AAD0822B646D100D50833 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		450AAD0822B646D100D50833 /* Example Layout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example Layout.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		450AAD0A22B646D100D50833 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		450AAD0C22B646D100D50833 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		450AAD1122B646D300D50833 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				450AACF922B645E200D50833 /* EKCollectionLayout.framework */,
-				450AAD0822B646D100D50833 /* Example.app */,
+				450AAD0822B646D100D50833 /* Example Layout.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -312,9 +312,9 @@
 			productReference = 450AACF922B645E200D50833 /* EKCollectionLayout.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		450AAD0722B646D100D50833 /* Example */ = {
+		450AAD0722B646D100D50833 /* Example Layout */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 450AAD1722B646D300D50833 /* Build configuration list for PBXNativeTarget "Example" */;
+			buildConfigurationList = 450AAD1722B646D300D50833 /* Build configuration list for PBXNativeTarget "Example Layout" */;
 			buildPhases = (
 				450AAD0422B646D100D50833 /* Sources */,
 				450AAD0522B646D100D50833 /* Frameworks */,
@@ -325,9 +325,9 @@
 			);
 			dependencies = (
 			);
-			name = Example;
+			name = "Example Layout";
 			productName = Example;
-			productReference = 450AAD0822B646D100D50833 /* Example.app */;
+			productReference = 450AAD0822B646D100D50833 /* Example Layout.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -363,7 +363,7 @@
 			projectRoot = "";
 			targets = (
 				450AACF822B645E200D50833 /* EKCollectionLayout */,
-				450AAD0722B646D100D50833 /* Example */,
+				450AAD0722B646D100D50833 /* Example Layout */,
 			);
 		};
 /* End PBXProject section */
@@ -667,7 +667,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.neuron.Example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neuron.EKCollectionLayout.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -689,7 +689,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.neuron.Example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neuron.EKCollectionLayout.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -717,7 +717,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		450AAD1722B646D300D50833 /* Build configuration list for PBXNativeTarget "Example" */ = {
+		450AAD1722B646D300D50833 /* Build configuration list for PBXNativeTarget "Example Layout" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				450AAD1822B646D300D50833 /* Debug */,
