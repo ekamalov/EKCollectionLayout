@@ -39,9 +39,19 @@ extension CarouselLayout: LayoutAttributesConfigurator {
     }
     
     public func targetContentOffset(flow: EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint {
-        let itemIndex = round(proposedContentOffset.x / scaleItemSize.width)
+        let offsetAdjustment = proposedContentOffset.x / scaleItemSize.width
+        
+        var itemIndex:CGFloat = 0
+        
+        if velocity.x > 0.2 {
+            itemIndex = offsetAdjustment.rounded(.up)
+        }else if velocity.x < -0.2 {
+            itemIndex = offsetAdjustment.rounded(.down)
+        }else {
+            itemIndex = offsetAdjustment.rounded()
+        }
+        
         delegate?.centeredItem(at: Int(itemIndex))
-        print(itemIndex, velocity)
         let xOffset = itemIndex * scaleItemSize.width
         return CGPoint(x: xOffset, y: 0)
     }
@@ -89,4 +99,8 @@ public extension CGFloat {
     var half: CGFloat {
         return self / 2
     }
+}
+
+public extension FloatingPoint {
+    var fraction: Self { return modf(self).1 }
 }
