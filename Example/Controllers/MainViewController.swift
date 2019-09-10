@@ -18,6 +18,8 @@ enum MainDataType {
 class MainViewController: UIViewController {
     var items:[MainDataType] = [.carousel, .hits, .genres, .persons]
     
+    private lazy var statusBar = UIImageView(image: UIImage(named: "statusBar"))
+    
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.headerReferenceSize = CGSize.init(width: mainScreen.width, height: 100)
@@ -37,10 +39,20 @@ class MainViewController: UIViewController {
         collectionView.register(HitFeedCell.self, forCellWithReuseIdentifier: HitFeedCell.reuseIdentifier)
         collectionView.register(PersonCell.self, forCellWithReuseIdentifier: PersonCell.reuseIdentifier)
 
-        view.addSubview(collectionView)
+        view.addSubviews(collectionView, statusBar)
+        
         collectionView.layout { $0.top(36).left.right.bottom.margin(0) }
+        statusBar.layout { $0.left.right.top.margin(0).height(44) }
+
     }
-    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        return .lightContent
+//    }
 }
 
 extension MainViewController: UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
