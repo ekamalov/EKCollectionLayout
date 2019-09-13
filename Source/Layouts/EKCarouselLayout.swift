@@ -48,7 +48,7 @@ extension CarouselLayout: EKLayoutAttributesConfigurator {
             itemIndex = offsetAdjustment.rounded()
         }
         
-        flow.progressor?.actuallyItem?(at: Int(itemIndex))
+        flow.progressor?.scrollingFinish?(actuallyItem: Int(itemIndex))
         let xOffset = itemIndex * scaleItemSize.width
         return CGPoint(x: xOffset, y: 0)
     }

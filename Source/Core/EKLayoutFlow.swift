@@ -17,8 +17,8 @@ import UIKit
 }
 
 @objc public protocol EKLayoutFlowProgressor {
-   @objc optional func actuallyItem(at index: Int)
-   @objc optional func scrollingFinish()
+    @objc optional func scrollingFinish()
+    @objc optional func scrollingFinish(actuallyItem index:Int)
 }
 
 open class EKLayoutFlow: UICollectionViewFlowLayout {
@@ -38,7 +38,7 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
         configurator?.prepare?(layout: self)
         cachedItemsAttributes = configurator?.prepareCache?(flow: self) ?? self.prepareCache()
     }
-  
+    
     private func prepareCache() -> [IndexPath: UICollectionViewLayoutAttributes] {
         var cache: [IndexPath: UICollectionViewLayoutAttributes] = [:]
         for item in 0..<collectionView.numberOfItems(inSection: 0) {
@@ -86,7 +86,7 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
     override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var attributes = cachedItemsAttributes.map { $0.value }.filter { $0.frame.intersects(rect) }.sorted(by: { $0.indexPath.row < $1.indexPath.row })
         attributes = attributes.compactMap { $0.copy() as? UICollectionViewLayoutAttributes }.map { attr in
-           configurator?.transform?(flow: self, attributes: attr)
+            configurator?.transform?(flow: self, attributes: attr)
             return attr
         }
         return attributes

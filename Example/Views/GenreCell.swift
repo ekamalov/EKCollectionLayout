@@ -54,7 +54,7 @@ class GenreCell: MainCell {
                 DispatchQueue.main.async {
                     self.items = data
                     self.carouselCV.reloadData()
-                    self.actuallyItem(at: 0)
+                    self.scrollingFinish(actuallyItem: 0)
                 }
             case .failure(let error): print(error)
             }
@@ -105,7 +105,7 @@ extension GenreCell: EKLayoutFlowProgressor {
     func scrollingFinish() {
         Haptic.impact(style: .medium).impact()
     }
-    func actuallyItem(at index: Int) {
+    func scrollingFinish(actuallyItem index: Int) {
         guard let item = items[safety: index] else { return }
         self.genreItems = item.items
         self.genreTitle.text = item.name
