@@ -112,8 +112,6 @@
 			children = (
 				45575CFD23277B0B0094C9DE /* Cartfile */,
 				450AAD0922B646D100D50833 /* Example */,
-				45575D1E23277BF20094C9DE /* AppAppearance.swift */,
-				45575D1D23277BF20094C9DE /* Extensions.swift */,
 				450AACFB22B645E200D50833 /* Source */,
 				450AACFA22B645E200D50833 /* Products */,
 				45455E9122F1F29A002C6C7B /* Frameworks */,
@@ -143,6 +141,8 @@
 		450AAD0922B646D100D50833 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				45575D1E23277BF20094C9DE /* AppAppearance.swift */,
+				45575D1D23277BF20094C9DE /* Extensions.swift */,
 				45E8459B22F1D82F004342D3 /* Views */,
 				45E8459A22F1D828004342D3 /* Controllers */,
 				45E8458322F1CA70004342D3 /* Service */,
