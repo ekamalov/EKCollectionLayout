@@ -18,7 +18,6 @@
 		450AAD2C22B78CDA00D50833 /* EKCarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD2A22B78CDA00D50833 /* EKCarouselLayout.swift */; };
 		45455EA922F1F903002C6C7B /* EKLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45455EA722F1F903002C6C7B /* EKLayout.framework */; };
 		45455EAB22F1F976002C6C7B /* EKBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45455EA822F1F903002C6C7B /* EKBuilder.framework */; };
-		45575CFE23277B0B0094C9DE /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 45575CFD23277B0B0094C9DE /* Cartfile */; };
 		45575D0523277BAC0094C9DE /* MainHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45575CFF23277BAC0094C9DE /* MainHeaderCell.swift */; };
 		45575D0623277BAC0094C9DE /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45575D0023277BAC0094C9DE /* GenreCell.swift */; };
 		45575D0723277BAC0094C9DE /* HitFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45575D0123277BAC0094C9DE /* HitFeedCell.swift */; };
@@ -43,6 +42,7 @@
 		45575D2B23277C210094C9DE /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45575D2923277C210094C9DE /* Gilroy-Bold.ttf */; };
 		45575D2C23277C210094C9DE /* Gilroy-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45575D2A23277C210094C9DE /* Gilroy-SemiBold.ttf */; };
 		45575D2E23277C370094C9DE /* EKAppStoreLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45575D2D23277C370094C9DE /* EKAppStoreLayout.swift */; };
+		45DCF60923558116005EB4C4 /* Cartfile.private in Resources */ = {isa = PBXBuildFile; fileRef = 45DCF60823558116005EB4C4 /* Cartfile.private */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,7 +59,6 @@
 		450AAD2A22B78CDA00D50833 /* EKCarouselLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKCarouselLayout.swift; sourceTree = "<group>"; };
 		45455EA722F1F903002C6C7B /* EKLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EKLayout.framework; path = Carthage/Build/iOS/EKLayout.framework; sourceTree = "<group>"; };
 		45455EA822F1F903002C6C7B /* EKBuilder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EKBuilder.framework; path = Carthage/Build/iOS/EKBuilder.framework; sourceTree = "<group>"; };
-		45575CFD23277B0B0094C9DE /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		45575CFF23277BAC0094C9DE /* MainHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainHeaderCell.swift; sourceTree = "<group>"; };
 		45575D0023277BAC0094C9DE /* GenreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
 		45575D0123277BAC0094C9DE /* HitFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HitFeedCell.swift; sourceTree = "<group>"; };
@@ -84,6 +83,7 @@
 		45575D2923277C210094C9DE /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gilroy-Bold.ttf"; path = "Example/Resources/Fonts/Gilroy-Bold.ttf"; sourceTree = SOURCE_ROOT; };
 		45575D2A23277C210094C9DE /* Gilroy-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gilroy-SemiBold.ttf"; path = "Example/Resources/Fonts/Gilroy-SemiBold.ttf"; sourceTree = SOURCE_ROOT; };
 		45575D2D23277C370094C9DE /* EKAppStoreLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKAppStoreLayout.swift; sourceTree = "<group>"; };
+		45DCF60823558116005EB4C4 /* Cartfile.private */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.private; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +109,7 @@
 		450AACEF22B645E200D50833 = {
 			isa = PBXGroup;
 			children = (
-				45575CFD23277B0B0094C9DE /* Cartfile */,
+				45DCF60823558116005EB4C4 /* Cartfile.private */,
 				450AAD0922B646D100D50833 /* Example */,
 				450AACFB22B645E200D50833 /* Source */,
 				450AACFA22B645E200D50833 /* Products */,
@@ -356,6 +356,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45DCF60923558116005EB4C4 /* Cartfile.private in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,7 +364,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45575CFE23277B0B0094C9DE /* Cartfile in Resources */,
 				45575D2C23277C210094C9DE /* Gilroy-SemiBold.ttf in Resources */,
 				450AAD1522B646D300D50833 /* LaunchScreen.storyboard in Resources */,
 				45575D2623277C120094C9DE /* Carousel.json in Resources */,
