@@ -13,9 +13,7 @@
 		450AAD1222B646D300D50833 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 450AAD1122B646D300D50833 /* Assets.xcassets */; };
 		450AAD1522B646D300D50833 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 450AAD1322B646D300D50833 /* LaunchScreen.storyboard */; };
 		450AAD2022B648ED00D50833 /* EKLayoutFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD1F22B648ED00D50833 /* EKLayoutFlow.swift */; };
-		450AAD2122B648ED00D50833 /* EKLayoutFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD1F22B648ED00D50833 /* EKLayoutFlow.swift */; };
 		450AAD2B22B78CDA00D50833 /* EKCarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD2A22B78CDA00D50833 /* EKCarouselLayout.swift */; };
-		450AAD2C22B78CDA00D50833 /* EKCarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD2A22B78CDA00D50833 /* EKCarouselLayout.swift */; };
 		45455EA922F1F903002C6C7B /* EKLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45455EA722F1F903002C6C7B /* EKLayout.framework */; };
 		45455EAB22F1F976002C6C7B /* EKBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45455EA822F1F903002C6C7B /* EKBuilder.framework */; };
 		45575D0523277BAC0094C9DE /* MainHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45575CFF23277BAC0094C9DE /* MainHeaderCell.swift */; };
@@ -41,8 +39,10 @@
 		45575D2823277C120094C9DE /* HitFeed.json in Resources */ = {isa = PBXBuildFile; fileRef = 45575D2423277C120094C9DE /* HitFeed.json */; };
 		45575D2B23277C210094C9DE /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45575D2923277C210094C9DE /* Gilroy-Bold.ttf */; };
 		45575D2C23277C210094C9DE /* Gilroy-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45575D2A23277C210094C9DE /* Gilroy-SemiBold.ttf */; };
-		45575D2E23277C370094C9DE /* EKAppStoreLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45575D2D23277C370094C9DE /* EKAppStoreLayout.swift */; };
 		45BD20C22356E95D009F1358 /* EKAppStoreLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45575D2D23277C370094C9DE /* EKAppStoreLayout.swift */; };
+		45BD20C32356ED19009F1358 /* EKAppStoreLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45575D2D23277C370094C9DE /* EKAppStoreLayout.swift */; };
+		45BD20C42356ED19009F1358 /* EKCarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD2A22B78CDA00D50833 /* EKCarouselLayout.swift */; };
+		45BD20C52356ED1C009F1358 /* EKLayoutFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD1F22B648ED00D50833 /* EKLayoutFlow.swift */; };
 		45DCF60923558116005EB4C4 /* Cartfile.private in Resources */ = {isa = PBXBuildFile; fileRef = 45DCF60823558116005EB4C4 /* Cartfile.private */; };
 /* End PBXBuildFile section */
 
@@ -419,7 +419,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				450AAD0D22B646D100D50833 /* MainViewController.swift in Sources */,
-				450AAD2122B648ED00D50833 /* EKLayoutFlow.swift in Sources */,
 				45575D1A23277BDD0094C9DE /* Carousel.swift in Sources */,
 				45575D2023277BF20094C9DE /* AppAppearance.swift in Sources */,
 				45575D1423277BD40094C9DE /* APIService.swift in Sources */,
@@ -428,6 +427,7 @@
 				45575D0723277BAC0094C9DE /* HitFeedCell.swift in Sources */,
 				45575D1223277BC50094C9DE /* GenresSubCells.swift in Sources */,
 				45575D0823277BAC0094C9DE /* CarouselCell.swift in Sources */,
+				45BD20C32356ED19009F1358 /* EKAppStoreLayout.swift in Sources */,
 				45575D1B23277BDD0094C9DE /* Genres.swift in Sources */,
 				45575D0923277BAC0094C9DE /* PersonCell.swift in Sources */,
 				450AAD0B22B646D100D50833 /* AppDelegate.swift in Sources */,
@@ -436,10 +436,10 @@
 				45575D0623277BAC0094C9DE /* GenreCell.swift in Sources */,
 				45575D0A23277BAC0094C9DE /* GradientView.swift in Sources */,
 				45575D1023277BC50094C9DE /* CarouselCellSub.swift in Sources */,
-				450AAD2C22B78CDA00D50833 /* EKCarouselLayout.swift in Sources */,
-				45575D2E23277C370094C9DE /* EKAppStoreLayout.swift in Sources */,
 				45575D1923277BDD0094C9DE /* HitFeed.swift in Sources */,
 				45575D1123277BC50094C9DE /* PersonSubCell.swift in Sources */,
+				45BD20C42356ED19009F1358 /* EKCarouselLayout.swift in Sources */,
+				45BD20C52356ED1C009F1358 /* EKLayoutFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
