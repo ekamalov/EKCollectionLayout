@@ -24,11 +24,24 @@
 
 import UIKit
 
-@objc public protocol EKLayoutAttributesConfigurator{
+@objc public protocol EKLayoutConfigurator{
+    /// This method uses it to calculate and return the width and height of the collection view’s content.
+    /// - Parameter flow: Layout object
     @objc optional func collectionViewContentSize(flow:EKLayoutFlow) -> CGSize
+    /// This method used to prepare items for displaying
+    /// - Parameter flow: Layout object
     @objc optional func prepare(layout flow:EKLayoutFlow)
+    /// The collection view calls -prepareLayout once at its first layout as the first message to the layout instance.
+    /// - Parameter flow: Layout object
     @objc optional func prepareCache(flow:EKLayoutFlow) -> [IndexPath: UICollectionViewLayoutAttributes]
+    /// This method uses to control the cell.
+    /// - Parameter flow: Layout object
+    /// - Parameter attributes: A layout object that manages the layout-related attributes for a given item in a collection view.
     @objc optional func transform(flow:EKLayoutFlow, attributes: UICollectionViewLayoutAttributes)
+    /// This method uses it to return the point at which to stop scrolling.
+    /// - Parameter flow: Layout object
+    /// - Parameter proposedContentOffset: The proposed point (in the collection view’s content view) at which to stop scrolling. This is the value at which scrolling would naturally stop if no adjustments were made. The point reflects the upper-left corner of the visible content.
+    /// - Parameter velocity: The current scrolling velocity along both the horizontal and vertical axes. This value is measured in points per second.
     @objc optional func targetContentOffset(flow:EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint
 }
 
@@ -39,8 +52,8 @@ import UIKit
 
 open class EKLayoutFlow: UICollectionViewFlowLayout {
     /// The configurator that would actually handle the transitions.
-    open var configurator: EKLayoutAttributesConfigurator?
-    
+    open var configurator: EKLayoutConfigurator?
+    /// The progressor
     open var progressor:EKLayoutFlowProgressor?
     
     internal var cachedItemsAttributes: [IndexPath: UICollectionViewLayoutAttributes] = [:]
@@ -109,11 +122,3 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
     }
 }
 
-public extension UICollectionViewFlowLayout {
-    convenience init(minimumLineSpacing: CGFloat = 10, scrollDirection:UICollectionView.ScrollDirection = .horizontal , itemSize:CGSize = .init(width: 20, height: 20)) {
-        self.init()
-        self.minimumLineSpacing = minimumLineSpacing
-        self.scrollDirection = scrollDirection
-        self.itemSize = itemSize
-    }
-}

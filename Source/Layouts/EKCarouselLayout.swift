@@ -26,19 +26,23 @@ import UIKit
 
 
 public class EKCarouselLayout {
-    /// The alpha to apply on the cells that are away from the center. Should be
+    /// The minimum alpha item factor for items not in focus. The factor used for each item will be proportional
     /// in range [0, 1]. 0.5 by default.
     public var minAlpha: CGFloat
-    /// The scaled item size
+    ///The minimum zoom size factor for items not in focus. The factor used for each item will be proportional
+    ///to the distance of its center to the collection's center.
     public var scaleItemSize:CGSize
     
+    /// Default initial
+    /// - Parameter minAlpha: minimum alpha
+    /// - Parameter scaleItemSize: out-of-focus cell size
     public init(minAlpha: CGFloat = 0.5, scaleItemSize:CGSize) {
         self.minAlpha = minAlpha
         self.scaleItemSize = scaleItemSize
     }
 }
 
-extension EKCarouselLayout: EKLayoutAttributesConfigurator {
+extension EKCarouselLayout: EKLayoutConfigurator {
     public func prepare(layout flow: EKLayoutFlow) {
         assert(flow.scrollDirection == .horizontal, "Horizontal scroll direction aren't supported!")
         if flow.collectionView.decelerationRate != .fast  { flow.collectionView.decelerationRate = .fast }
@@ -103,12 +107,5 @@ extension EKCarouselLayout: EKLayoutAttributesConfigurator {
     
 }
 
-public func calcRangePercent(min:CGFloat, max:CGFloat, percentage:CGFloat, reverse:Bool = false) -> CGFloat {
-    let tmpPercentage = CGFloat.minimum(abs(percentage), 1.0)
-    return reverse ?  ((max - min) * tmpPercentage) + min :  ((min - max) * tmpPercentage) + max
-}
 
-public extension CGFloat {
-    var half: CGFloat { return self / 2 }
-}
 

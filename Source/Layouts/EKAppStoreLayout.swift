@@ -24,7 +24,7 @@
 
 import UIKit
 
-public class EKAppStoreLayout: EKLayoutAttributesConfigurator {
+public class EKAppStoreLayout: EKLayoutConfigurator {
     public init() {}
     
     public func prepare(layout flow: EKLayoutFlow) {

@@ -31,6 +31,7 @@ extension CAGradientLayer {
         self.frame = frame
     }
 }
+
 extension UIView {
     func addSubviews(_ views:UIView...) {
         views.forEach { addSubview($0) }

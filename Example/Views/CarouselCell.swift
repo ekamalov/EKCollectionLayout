@@ -26,6 +26,7 @@ import UIKit
 import EKLayout
 
 class MainCell: UICollectionViewCell {
+    
     lazy var title:UILabel = .build {
         $0.textColor = Colors.lightText.value
         $0.font = Fonts.GilroyBold.withSize(25)
@@ -77,15 +78,19 @@ class CarouselCell: UICollectionViewCell {
 
 
 extension CarouselCell: UICollectionViewDelegate,UICollectionViewDataSource, EKLayoutFlowProgressor {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarouselCellSub.reuseIdentifier, for: indexPath) as! CarouselCellSub
         cell.setData(item: items[indexPath.row])
         return cell
     }
+    
     func scrollingFinish() {
         Haptic.impact(style: .light).impact()
     }
+    
 }

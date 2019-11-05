@@ -39,11 +39,12 @@
 		45575D2823277C120094C9DE /* HitFeed.json in Resources */ = {isa = PBXBuildFile; fileRef = 45575D2423277C120094C9DE /* HitFeed.json */; };
 		45575D2B23277C210094C9DE /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45575D2923277C210094C9DE /* Gilroy-Bold.ttf */; };
 		45575D2C23277C210094C9DE /* Gilroy-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45575D2A23277C210094C9DE /* Gilroy-SemiBold.ttf */; };
+		45AADDB8236EB25700021600 /* EKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AADDB7236EB25700021600 /* EKExtensions.swift */; };
+		45AADDB9236EB27900021600 /* EKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AADDB7236EB25700021600 /* EKExtensions.swift */; };
 		45BD20C22356E95D009F1358 /* EKAppStoreLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45575D2D23277C370094C9DE /* EKAppStoreLayout.swift */; };
 		45BD20C32356ED19009F1358 /* EKAppStoreLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45575D2D23277C370094C9DE /* EKAppStoreLayout.swift */; };
 		45BD20C42356ED19009F1358 /* EKCarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD2A22B78CDA00D50833 /* EKCarouselLayout.swift */; };
 		45BD20C52356ED1C009F1358 /* EKLayoutFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450AAD1F22B648ED00D50833 /* EKLayoutFlow.swift */; };
-		45DCF60923558116005EB4C4 /* Cartfile.private in Resources */ = {isa = PBXBuildFile; fileRef = 45DCF60823558116005EB4C4 /* Cartfile.private */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		45575D2923277C210094C9DE /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gilroy-Bold.ttf"; path = "Example/Resources/Fonts/Gilroy-Bold.ttf"; sourceTree = SOURCE_ROOT; };
 		45575D2A23277C210094C9DE /* Gilroy-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gilroy-SemiBold.ttf"; path = "Example/Resources/Fonts/Gilroy-SemiBold.ttf"; sourceTree = SOURCE_ROOT; };
 		45575D2D23277C370094C9DE /* EKAppStoreLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EKAppStoreLayout.swift; sourceTree = "<group>"; };
+		45AADDB7236EB25700021600 /* EKExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKExtensions.swift; sourceTree = "<group>"; };
 		45DCF60823558116005EB4C4 /* Cartfile.private */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.private; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				450AAD1F22B648ED00D50833 /* EKLayoutFlow.swift */,
+				45AADDB7236EB25700021600 /* EKExtensions.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -357,7 +360,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45DCF60923558116005EB4C4 /* Cartfile.private in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +413,7 @@
 				45BD20C22356E95D009F1358 /* EKAppStoreLayout.swift in Sources */,
 				450AAD2022B648ED00D50833 /* EKLayoutFlow.swift in Sources */,
 				450AAD2B22B78CDA00D50833 /* EKCarouselLayout.swift in Sources */,
+				45AADDB8236EB25700021600 /* EKExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45AADDB9236EB27900021600 /* EKExtensions.swift in Sources */,
 				450AAD0D22B646D100D50833 /* MainViewController.swift in Sources */,
 				45575D1A23277BDD0094C9DE /* Carousel.swift in Sources */,
 				45575D2023277BF20094C9DE /* AppAppearance.swift in Sources */,
@@ -600,9 +604,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuron.EKCollectionLayout;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -627,8 +632,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuron.EKCollectionLayout;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -643,6 +649,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -650,7 +657,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuron.EKCollectionLayout.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -665,6 +672,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Example/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -672,7 +680,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.neuron.EKCollectionLayout.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
