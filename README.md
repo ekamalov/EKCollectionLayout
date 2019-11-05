@@ -129,7 +129,7 @@ Contributions are very welcome 🙌. You can help me evolution this project. I o
     @objc optional func targetContentOffset(flow:EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint
 }
 ```
-For clarity, you can look at layouts that I implemented ![Carousel](Source/Layouts/EKCarouselLayout.swift).
+For clarity, you can look at layouts that I implemented [`Carousel` layout](Source/Layouts/EKCarouselLayout.swift).
 ## License
 `EKCollectionLayout`  is released under the MIT license. Check LICENSE.md for details.
 
