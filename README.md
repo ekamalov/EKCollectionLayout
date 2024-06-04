@@ -20,8 +20,8 @@ The best way to show multimedia content is by selecting them for collections. Th
 
 ## Requirements
 
-- iOS 12.2+
-- Xcode 11+
+- iOS 14.0+
+- Xcode 14+
 - Swift 5.0+
 
 ## Features
@@ -108,25 +108,25 @@ let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout
 Contributions are very welcome 🙌. You can help me evolution this project. I open to all offers. Below I will describe how you can create. I created the `EKLayoutConfigurator` protocol. you can create you're a class and implement protocol methods. In the base class `configurator` there is a property of the configurator. this property accepts only the class that implemented
 `EKLayoutConfigurator` protocol.
 ```swift
-@objc public protocol EKLayoutConfigurator {
+public protocol EKLayoutConfigurator {
     /// This method uses it to calculate and return the width and height of the collection view’s content.
     /// - Parameter flow: Layout object
-    @objc optional func collectionViewContentSize(flow:EKLayoutFlow) -> CGSize
+    func collectionViewContentSize(flow: EKLayoutFlow) -> CGSize?
     /// This method used to prepare items for displaying
     /// - Parameter flow: Layout object
-    @objc optional func prepare(layout flow:EKLayoutFlow)
+    func prepare(layout flow: EKLayoutFlow)
     /// The collection view calls -prepareLayout once at its first layout as the first message to the layout instance.
     /// - Parameter flow: Layout object
-    @objc optional func prepareCache(flow:EKLayoutFlow) -> [IndexPath: UICollectionViewLayoutAttributes]
+    func prepareCache(flow: EKLayoutFlow) -> [IndexPath: UICollectionViewLayoutAttributes]?
     /// This method uses to control the cell.
     /// - Parameter flow: Layout object
     /// - Parameter attributes: A layout object that manages the layout-related attributes for a given item in a collection view.
-    @objc optional func transform(flow:EKLayoutFlow, attributes: UICollectionViewLayoutAttributes)
+    func transform(flow: EKLayoutFlow, attributes: UICollectionViewLayoutAttributes)
     /// This method uses it to return the point at which to stop scrolling.
     /// - Parameter flow: Layout object
     /// - Parameter proposedContentOffset: The proposed point (in the collection view’s content view) at which to stop scrolling. This is the value at which scrolling would naturally stop if no adjustments were made. The point reflects the upper-left corner of the visible content.
     /// - Parameter velocity: The current scrolling velocity along both the horizontal and vertical axes. This value is measured in points per second.
-    @objc optional func targetContentOffset(flow:EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint
+    func targetContentOffset(flow: EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint?
 }
 ```
 For clarity, you can look at layouts that I implemented [`Carousel` layout](Source/Layouts/EKCarouselLayout.swift).

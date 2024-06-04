@@ -25,10 +25,23 @@
 import UIKit
 
 public protocol EKLayoutConfigurator {
+    /// This method uses it to calculate and return the width and height of the collection view’s content.
+    /// - Parameter flow: Layout object
     func collectionViewContentSize(flow: EKLayoutFlow) -> CGSize?
+    /// This method used to prepare items for displaying
+    /// - Parameter flow: Layout object
     func prepare(layout flow: EKLayoutFlow)
+    /// The collection view calls -prepareLayout once at its first layout as the first message to the layout instance.
+    /// - Parameter flow: Layout object
     func prepareCache(flow: EKLayoutFlow) -> [IndexPath: UICollectionViewLayoutAttributes]?
+    /// This method uses to control the cell.
+    /// - Parameter flow: Layout object
+    /// - Parameter attributes: A layout object that manages the layout-related attributes for a given item in a collection view.
     func transform(flow: EKLayoutFlow, attributes: UICollectionViewLayoutAttributes)
+    /// This method uses it to return the point at which to stop scrolling.
+    /// - Parameter flow: Layout object
+    /// - Parameter proposedContentOffset: The proposed point (in the collection view’s content view) at which to stop scrolling. This is the value at which scrolling would naturally stop if no adjustments were made. The point reflects the upper-left corner of the visible content.
+    /// - Parameter velocity: The current scrolling velocity along both the horizontal and vertical axes. This value is measured in points per second.
     func targetContentOffset(flow: EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint?
 }
 
@@ -37,19 +50,19 @@ public extension EKLayoutConfigurator {
     func collectionViewContentSize(flow: EKLayoutFlow) -> CGSize? {
         return nil
     }
-
+    
     func prepare(layout flow: EKLayoutFlow) {
         // Default implementation
     }
-
+    
     func prepareCache(flow: EKLayoutFlow) -> [IndexPath: UICollectionViewLayoutAttributes]? {
         return nil
     }
-
+    
     func transform(flow: EKLayoutFlow, attributes: UICollectionViewLayoutAttributes) {
         // Default implementation
     }
-
+    
     func targetContentOffset(flow: EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint? {
         return nil
     }
