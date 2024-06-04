@@ -44,18 +44,21 @@ public class EKCarouselLayout {
 
 extension EKCarouselLayout: EKLayoutConfigurator {
     public func prepare(layout flow: EKLayoutFlow) {
+        guard let collectionView = flow.collectionView  else { return }
         assert(flow.scrollDirection == .horizontal, "Horizontal scroll direction aren't supported!")
-        if flow.collectionView.decelerationRate != .fast  { flow.collectionView.decelerationRate = .fast }
+        if collectionView.decelerationRate != .fast  { collectionView.decelerationRate = .fast }
     }
     
-    public func collectionViewContentSize(flow: EKLayoutFlow) -> CGSize {
-        let residueContent:CGFloat = flow.collectionView.bounds.width - flow.itemSize.width
-        let itemsCount = CGFloat(flow.collectionView.numberOfItems(inSection: 0) - 1)
+    public func collectionViewContentSize(flow: EKLayoutFlow) -> CGSize? {
+        guard let collectionView = flow.collectionView  else { return nil }
+        
+        let residueContent:CGFloat = collectionView.bounds.width - flow.itemSize.width
+        let itemsCount = CGFloat(collectionView.numberOfItems(inSection: 0) - 1)
         let contentWidth:CGFloat = residueContent + flow.itemSize.width + (itemsCount * scaleItemSize.width)
-        return CGSize(width: contentWidth, height: flow.collectionView.bounds.height)
+        return CGSize(width: contentWidth, height: collectionView.bounds.height)
     }
     
-    public func targetContentOffset(flow: EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint {
+    public func targetContentOffset(flow: EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint? {
         let offsetAdjustment = proposedContentOffset.x / scaleItemSize.width
         
         var itemIndex:CGFloat = 0
@@ -74,9 +77,11 @@ extension EKCarouselLayout: EKLayoutConfigurator {
     }
     
     public func transform(flow: EKLayoutFlow, attributes: UICollectionViewLayoutAttributes) {
-        let visibleRect = CGRect(origin: flow.collectionView.contentOffset, size: flow.collectionView.bounds.size)
+        guard let collectionView = flow.collectionView else { return }
         
-        let leftInset:CGFloat = (flow.collectionView.bounds.width -  flow.itemSize.width).half
+        let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
+        
+        let leftInset:CGFloat = (collectionView.bounds.width -  flow.itemSize.width).half
         let scaledCellOffsetX:CGFloat = leftInset + CGFloat(attributes.indexPath.row) * scaleItemSize.width
         let distanceBetweenCellAndBoundCenters = scaledCellOffsetX - visibleRect.midX + flow.itemSize.width.half
         
@@ -104,7 +109,6 @@ extension EKCarouselLayout: EKLayoutConfigurator {
         
         attributes.alpha = calcRangePercent(min: minAlpha, max: 1, percentage: scale)
     }
-    
 }
 
 

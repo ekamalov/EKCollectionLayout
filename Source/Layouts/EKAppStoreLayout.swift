@@ -29,13 +29,15 @@ public class EKAppStoreLayout: EKLayoutConfigurator {
     
     public func prepare(layout flow: EKLayoutFlow) {
         assert(flow.scrollDirection == .horizontal, "Horizontal scroll direction aren't supported!")
-        if flow.collectionView.decelerationRate != .fast  { flow.collectionView.decelerationRate = .fast }
+        if flow.collectionView?.decelerationRate != .fast  { flow.collectionView?.decelerationRate = .fast }
     }
     
-    public func targetContentOffset(flow: EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint {
-        guard let rectAttributes = flow.layoutAttributesForElements(in: .init(origin: .init(x: proposedContentOffset.x, y: 0), size: flow.collectionView.frame.size)) else { return .zero }
+    public func targetContentOffset(flow: EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint? {
+        guard let collectionView = flow.collectionView else { return nil }
+        
+        guard let rectAttributes = flow.layoutAttributesForElements(in: .init(origin: .init(x: proposedContentOffset.x, y: 0), size: collectionView.frame.size)) else { return .zero }
         var offsetAdjustment = CGFloat.greatestFiniteMagnitude
-        let proposedContentOffsetCenterX = proposedContentOffset.x + flow.collectionView.frame.width / 2
+        let proposedContentOffsetCenterX = proposedContentOffset.x + collectionView.frame.width / 2
 
         for layoutAttributes in rectAttributes {
             let itemHorizontalCenter = layoutAttributes.center.x
@@ -44,7 +46,7 @@ public class EKAppStoreLayout: EKLayoutConfigurator {
             }
         }
         var newOffsetX = proposedContentOffset.x + offsetAdjustment
-        let offset = newOffsetX - flow.collectionView.contentOffset.x
+        let offset = newOffsetX - collectionView.contentOffset.x
 
         if (velocity.x < 0 && offset > 0) || (velocity.x > 0 && offset < 0) {
             let pageWidth = flow.itemSize.width + flow.minimumLineSpacing

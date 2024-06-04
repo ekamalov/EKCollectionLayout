@@ -24,26 +24,37 @@
 
 import UIKit
 
-@objc public protocol EKLayoutConfigurator{
-    /// This method uses it to calculate and return the width and height of the collection view’s content.
-    /// - Parameter flow: Layout object
-    @objc optional func collectionViewContentSize(flow:EKLayoutFlow) -> CGSize
-    /// This method used to prepare items for displaying
-    /// - Parameter flow: Layout object
-    @objc optional func prepare(layout flow:EKLayoutFlow)
-    /// The collection view calls -prepareLayout once at its first layout as the first message to the layout instance.
-    /// - Parameter flow: Layout object
-    @objc optional func prepareCache(flow:EKLayoutFlow) -> [IndexPath: UICollectionViewLayoutAttributes]
-    /// This method uses to control the cell.
-    /// - Parameter flow: Layout object
-    /// - Parameter attributes: A layout object that manages the layout-related attributes for a given item in a collection view.
-    @objc optional func transform(flow:EKLayoutFlow, attributes: UICollectionViewLayoutAttributes)
-    /// This method uses it to return the point at which to stop scrolling.
-    /// - Parameter flow: Layout object
-    /// - Parameter proposedContentOffset: The proposed point (in the collection view’s content view) at which to stop scrolling. This is the value at which scrolling would naturally stop if no adjustments were made. The point reflects the upper-left corner of the visible content.
-    /// - Parameter velocity: The current scrolling velocity along both the horizontal and vertical axes. This value is measured in points per second.
-    @objc optional func targetContentOffset(flow:EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint
+public protocol EKLayoutConfigurator {
+    func collectionViewContentSize(flow: EKLayoutFlow) -> CGSize?
+    func prepare(layout flow: EKLayoutFlow)
+    func prepareCache(flow: EKLayoutFlow) -> [IndexPath: UICollectionViewLayoutAttributes]?
+    func transform(flow: EKLayoutFlow, attributes: UICollectionViewLayoutAttributes)
+    func targetContentOffset(flow: EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint?
 }
+
+// Реализация по умолчанию для протокола, чтобы методы стали необязательными
+public extension EKLayoutConfigurator {
+    func collectionViewContentSize(flow: EKLayoutFlow) -> CGSize? {
+        return nil
+    }
+
+    func prepare(layout flow: EKLayoutFlow) {
+        // Default implementation
+    }
+
+    func prepareCache(flow: EKLayoutFlow) -> [IndexPath: UICollectionViewLayoutAttributes]? {
+        return nil
+    }
+
+    func transform(flow: EKLayoutFlow, attributes: UICollectionViewLayoutAttributes) {
+        // Default implementation
+    }
+
+    func targetContentOffset(flow: EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint? {
+        return nil
+    }
+}
+
 
 @objc public protocol EKLayoutFlowProgressor {
     @objc optional func scrollingFinish()
@@ -58,18 +69,19 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
     
     internal var cachedItemsAttributes: [IndexPath: UICollectionViewLayoutAttributes] = [:]
     
-    override open var collectionView: UICollectionView { return super.collectionView! }
+    override open var collectionView: UICollectionView? { return super.collectionView  }
     
     override open func prepare() {
         super.prepare()
-        assert(collectionView.numberOfSections == 1, "Multi section aren't supported!")
-        guard cachedItemsAttributes.isEmpty || cachedItemsAttributes.count != collectionView.numberOfItems(inSection: 0) else { return }
-        configurator?.prepare?(layout: self)
-        cachedItemsAttributes = configurator?.prepareCache?(flow: self) ?? self.prepareCache()
+        assert(collectionView?.numberOfSections == 1, "Multi section aren't supported!")
+        guard cachedItemsAttributes.isEmpty || cachedItemsAttributes.count != collectionView?.numberOfItems(inSection: 0) else { return }
+        configurator?.prepare(layout: self)
+        cachedItemsAttributes = configurator?.prepareCache(flow: self) ?? self.prepareCache()
     }
     
     private func prepareCache() -> [IndexPath: UICollectionViewLayoutAttributes] {
         var cache: [IndexPath: UICollectionViewLayoutAttributes] = [:]
+        guard let collectionView else { return cache }
         for item in 0..<collectionView.numberOfItems(inSection: 0) {
             let indexPath = IndexPath(item: item, section: 0)
             cache[indexPath] = createAttributesForItem(at: indexPath)
@@ -84,17 +96,17 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
     }
     
     open override var collectionViewContentSize: CGSize {
-        return configurator?.collectionViewContentSize?(flow: self) ?? super.collectionViewContentSize
+        return configurator?.collectionViewContentSize(flow: self) ?? super.collectionViewContentSize
     }
     
     open override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         progressor?.scrollingFinish?()
-        return configurator?.targetContentOffset?(flow: self, proposedContentOffset: proposedContentOffset, velocity: velocity) ?? super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity)
+        return configurator?.targetContentOffset(flow: self, proposedContentOffset: proposedContentOffset, velocity: velocity) ?? super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity)
     }
     
     // MARK: - Invalidate layout
     override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        if newBounds.size != collectionView.bounds.size {
+        if newBounds.size != collectionView?.bounds.size {
             cachedItemsAttributes.removeAll()
             return false
         }
@@ -115,7 +127,7 @@ open class EKLayoutFlow: UICollectionViewFlowLayout {
     override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var attributes = cachedItemsAttributes.map { $0.value }.filter { $0.frame.intersects(rect) }.sorted(by: { $0.indexPath.row < $1.indexPath.row })
         attributes = attributes.compactMap { $0.copy() as? UICollectionViewLayoutAttributes }.map { attr in
-            configurator?.transform?(flow: self, attributes: attr)
+            configurator?.transform(flow: self, attributes: attr)
             return attr
         }
         return attributes
