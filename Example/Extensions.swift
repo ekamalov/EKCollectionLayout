@@ -45,7 +45,7 @@ extension UIView {
 }
 
 
-public protocol Reusable: class {
+public protocol Reusable: AnyObject {
     static var reuseIdentifier: String { get }
 }
 public extension Reusable {

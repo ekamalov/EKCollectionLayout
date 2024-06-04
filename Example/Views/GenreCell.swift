@@ -40,6 +40,7 @@ class GenreCell: MainCell {
         cv.register(GenresCarouselCell.self, forCellWithReuseIdentifier: GenresCarouselCell.reuseIdentifier)
         cv.dataSource = self
         cv.delegate = self
+        cv.backgroundColor = .clear
         return cv
     }()
     
@@ -51,6 +52,7 @@ class GenreCell: MainCell {
         cv.register(GenresCarouselSubCell.self, forCellWithReuseIdentifier: GenresCarouselSubCell.reuseIdentifier)
         cv.dataSource = self
         cv.delegate = self
+        cv.backgroundColor = .clear
         return cv
     }()
     

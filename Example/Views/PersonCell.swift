@@ -37,6 +37,7 @@ class PersonCell: MainCell {
         cv.register(PersonSubCell.self, forCellWithReuseIdentifier: PersonSubCell.reuseIdentifier)
         cv.dataSource = self
         cv.delegate = self
+        cv.backgroundColor = .clear
         return cv
     }()
     private var hapticIsEnable = false

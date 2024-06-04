@@ -56,6 +56,7 @@ class CarouselCell: UICollectionViewCell {
         cv.register(CarouselCellSub.self, forCellWithReuseIdentifier: CarouselCellSub.reuseIdentifier)
         cv.dataSource = self
         cv.delegate = self
+        cv.backgroundColor = .clear
         return cv
     }()
     

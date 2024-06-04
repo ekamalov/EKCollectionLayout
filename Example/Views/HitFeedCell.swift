@@ -39,6 +39,7 @@ class HitFeedCell: MainCell {
         cv.register(HitFeedSubCell.self, forCellWithReuseIdentifier: HitFeedSubCell.reuseIdentifier)
         cv.dataSource = self
         cv.delegate = self
+        cv.backgroundColor = .clear
         return cv
     }()
     
