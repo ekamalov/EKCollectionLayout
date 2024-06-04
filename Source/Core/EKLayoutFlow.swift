@@ -45,7 +45,6 @@ public protocol EKLayoutConfigurator {
     func targetContentOffset(flow: EKLayoutFlow, proposedContentOffset: CGPoint, velocity: CGPoint) -> CGPoint?
 }
 
-// Реализация по умолчанию для протокола, чтобы методы стали необязательными
 public extension EKLayoutConfigurator {
     func collectionViewContentSize(flow: EKLayoutFlow) -> CGSize? {
         return nil
